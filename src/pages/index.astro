@@ -1,0 +1,205 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { pageContent, percorsi, sectionAnchors } from "../data/percorsi";
+---
+
+<BaseLayout title="Percorsi Master | Beauty Line Academy" description={pageContent.hero.description}>
+  <header class="site-header">
+    <div class="container header-inner">
+      <strong>{pageContent.brand}</strong>
+      <nav class="header-nav">
+        <a href={`#${sectionAnchors.programma}`}>Programma</a>
+        <a href={`#${sectionAnchors.requisiti}`}>Requisiti</a>
+        <a href={`#${sectionAnchors.faq}`}>FAQ</a>
+        <a href={`#${sectionAnchors.contatti}`}>Contatti</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <p class="eyebrow">{pageContent.hero.eyebrow}</p>
+          <h1>{pageContent.hero.title}</h1>
+          <p>{pageContent.hero.description}</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href={`#${sectionAnchors.contatti}`}>{pageContent.hero.ctaPrimary}</a>
+            <a class="btn btn-secondary" href={`#${sectionAnchors.programma}`}>{pageContent.hero.ctaSecondary}</a>
+          </div>
+          <div class="metric-list">
+            <span class="chip">2 percorsi esclusivi</span>
+            <span class="chip">Master nazionali e internazionali</span>
+            <span class="chip">Certificazione finale</span>
+          </div>
+        </div>
+        <div class="placeholder-media" role="img" aria-label={pageContent.hero.imageAlt}>
+          {pageContent.hero.imagePlaceholder}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id={sectionAnchors.programma}>
+      <div class="container">
+        <h2 class="section-title">Confronta i percorsi</h2>
+        <p class="section-subtitle">{pageContent.comparisonIntro}</p>
+        <div class="grid two-col" style="margin-top: 24px;">
+          {percorsi.map((percorso) => (
+            <article class="card content-card">
+              <p class="eyebrow">{percorso.name}</p>
+              <h3>{percorso.subtitle}</h3>
+              <p>{percorso.description}</p>
+              <h4>Date percorso</h4>
+              <div class="date-list">
+                {percorso.dates.map((date) => (
+                  <span class="date-pill">{date}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {percorsi.map((percorso) => (
+      <section class="section">
+        <div class="container grid two-col">
+          <article class="card content-card">
+            <p class="eyebrow">{percorso.name}</p>
+            <h2 class="section-title" style="font-size: clamp(1.4rem, 2.1vw, 2rem);">{percorso.subtitle}</h2>
+            <p>{percorso.description}</p>
+            <h4>Cosa include</h4>
+            <ul>
+              {percorso.highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+          </article>
+          <article class="card content-card">
+            <h3>Certificazione finale</h3>
+            <p class="section-subtitle">Valutazione finale in base al livello raggiunto.</p>
+            <ul style="margin-top: 12px;">
+              {percorso.certifications.map((certification) => (
+                <li><strong>{certification.level}</strong> - {certification.label}</li>
+              ))}
+            </ul>
+            <div class="placeholder-media" style="margin-top: 18px; min-height: 160px;">
+              Placeholder foto master / lavori corso
+            </div>
+          </article>
+        </div>
+      </section>
+    ))}
+
+    <section class="section">
+      <div class="container">
+        <article class="card content-card">
+          <p class="eyebrow">Evento conclusivo</p>
+          <h2 class="section-title">{pageContent.masterAwardDay.title}</h2>
+          <p><strong>{pageContent.masterAwardDay.date}</strong> - {pageContent.masterAwardDay.description}</p>
+          <div class="grid two-col" style="margin-top: 12px;">
+            <ul>
+              {pageContent.masterAwardDay.bullets.slice(0, 3).map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+            <ul>
+              {pageContent.masterAwardDay.bullets.slice(3).map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id={sectionAnchors.requisiti}>
+      <div class="container grid two-col">
+        <article class="card content-card">
+          <h2 class="section-title">Requisiti di partecipazione</h2>
+          <p class="section-subtitle">E necessario aver completato almeno uno dei seguenti corsi:</p>
+          <ul style="margin-top: 12px;">
+            {pageContent.requirements.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <p style="margin-top: 14px;">{pageContent.preMaster}</p>
+        </article>
+        <article class="card content-card">
+          <h2 class="section-title">Materiali e attrezzatura</h2>
+          <p class="section-subtitle">Ogni partecipante riceve un kit completo. Porta solo:</p>
+          <ul style="margin-top: 12px;">
+            {pageContent.materials.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Cosa succede durante una giornata di master</h2>
+        <div class="grid three-col" style="margin-top: 20px;">
+          {pageContent.dayFlow.map((step) => (
+            <article class="card content-card">
+              <p>{step}</p>
+            </article>
+          ))}
+        </div>
+        <article class="card content-card" style="margin-top: 22px;">
+          <h3>Perche partecipare ai Percorsi Master</h3>
+          <p>{pageContent.whyParticipate}</p>
+          <p><strong>{pageContent.urgency}</strong></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id={sectionAnchors.faq}>
+      <div class="container">
+        <h2 class="section-title">Domande frequenti</h2>
+        <div class="card content-card" style="margin-top: 16px;">
+          {pageContent.faqs.map((faq) => (
+            <details class="faq-item">
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id={sectionAnchors.contatti}>
+      <div class="container">
+        <article class="card lead-wrap">
+          <p class="eyebrow">Prenota ora</p>
+          <h2 class="section-title" style="margin-bottom: 10px;">{pageContent.leadForm.title}</h2>
+          <p class="section-subtitle">{pageContent.leadForm.subtitle}</p>
+
+          <form class="lead-form" action="#" method="post">
+            <input name="nome" type="text" placeholder="Nome e cognome" />
+            <input name="email" type="email" placeholder="Email" />
+            <input name="telefono" type="tel" placeholder="Telefono" />
+            <textarea name="messaggio" placeholder="Dimmi quale percorso ti interessa"></textarea>
+            <label class="small-text">
+              <input type="checkbox" name="privacy" />
+              {pageContent.leadForm.privacyText}
+            </label>
+            <button type="submit" class="btn btn-primary">{pageContent.leadForm.submitLabel}</button>
+          </form>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>{pageContent.brand}</strong></p>
+      <p>{pageContent.contactAddress}</p>
+      <p>Info e iscrizioni: {pageContent.contactPhone}</p>
+      <p>
+        Sito ufficiale: <a href={pageContent.siteUrl} target="_blank" rel="noreferrer">{pageContent.siteUrl}</a>
+      </p>
+    </div>
+  </footer>
+</BaseLayout>
