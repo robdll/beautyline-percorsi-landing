@@ -206,6 +206,37 @@ header.site-header {
   padding-left: 18px;
 }
 
+.schedule-card {
+  overflow: hidden;
+}
+
+.schedule-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: #efe3d9;
+  transition: transform 420ms ease;
+  transform-origin: center center;
+}
+
+.schedule-card:hover img,
+.schedule-card:focus-within img {
+  transform: scale(1.08);
+}
+
+.schedule-card-body {
+  padding: 16px 16px 18px;
+}
+
+.schedule-card-body h3 {
+  margin: 2px 0 8px;
+}
+
+.schedule-card-body p {
+  margin: 0;
+  color: var(--muted);
+}
+
 .date-list {
   margin-top: 14px;
   display: flex;
@@ -275,6 +306,36 @@ header.site-header {
 footer {
   padding: 38px 0 54px;
   color: var(--muted);
+}
+
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(20px) scale(0.97);
+  transition: opacity 560ms ease, transform 560ms ease;
+  will-change: opacity, transform;
+}
+
+html.js .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .schedule-card img {
+    transition: none;
+  }
+
+  html.js .reveal,
+  html.js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 @media (max-width: 900px) {

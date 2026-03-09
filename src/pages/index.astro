@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { pageContent, percorsi, sectionAnchors } from "../data/percorsi";
+import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/percorsi";
 ---
 
 <BaseLayout title="Percorsi Master | Beauty Line Academy" description={pageContent.hero.description}>
@@ -8,6 +8,7 @@ import { pageContent, percorsi, sectionAnchors } from "../data/percorsi";
     <div class="container header-inner">
       <strong>{pageContent.brand}</strong>
       <nav class="header-nav">
+        <a href={`#${sectionAnchors.percorsi}`}>Percorsi</a>
         <a href={`#${sectionAnchors.programma}`}>Programma</a>
         <a href={`#${sectionAnchors.requisiti}`}>Requisiti</a>
         <a href={`#${sectionAnchors.faq}`}>FAQ</a>
@@ -27,11 +28,6 @@ import { pageContent, percorsi, sectionAnchors } from "../data/percorsi";
             <a class="btn btn-primary" href={`#${sectionAnchors.contatti}`}>{pageContent.hero.ctaPrimary}</a>
             <a class="btn btn-secondary" href={`#${sectionAnchors.programma}`}>{pageContent.hero.ctaSecondary}</a>
           </div>
-          <div class="metric-list">
-            <span class="chip">2 percorsi esclusivi</span>
-            <span class="chip">Master nazionali e internazionali</span>
-            <span class="chip">Certificazione finale</span>
-          </div>
         </div>
         <div class="placeholder-media" role="img" aria-label={pageContent.hero.imageAlt}>
           {pageContent.hero.imagePlaceholder}
@@ -39,7 +35,7 @@ import { pageContent, percorsi, sectionAnchors } from "../data/percorsi";
       </div>
     </section>
 
-    <section class="section" id={sectionAnchors.programma}>
+    <section class="section" id={sectionAnchors.percorsi}>
       <div class="container">
         <h2 class="section-title">Confronta i percorsi</h2>
         <p class="section-subtitle">{pageContent.comparisonIntro}</p>
@@ -58,6 +54,30 @@ import { pageContent, percorsi, sectionAnchors } from "../data/percorsi";
             </article>
           ))}
         </div>
+      </div>
+    </section>
+
+    <section class="section" id={sectionAnchors.programma}>
+      <div class="container">
+        <h2 class="section-title">{pageContent.programSectionTitle}</h2>
+        <p class="section-subtitle">{pageContent.programIntro}</p>
+        {programTracks.map((track) => (
+          <div style="margin-top: 26px;">
+            <p class="eyebrow">{track.name}</p>
+            <div class="grid three-col" style="margin-top: 10px;">
+              {track.sessions.map((session) => (
+                <article class="card schedule-card">
+                  <img src={session.image} alt={`Master ${session.master}`} loading="lazy" />
+                  <div class="schedule-card-body">
+                    <p class="eyebrow">{session.date}</p>
+                    <h3>{session.master}</h3>
+                    <p>{session.lessonPlaceholder}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
 
@@ -202,4 +222,31 @@ import { pageContent, percorsi, sectionAnchors } from "../data/percorsi";
       </p>
     </div>
   </footer>
+
+  <script is:inline>
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const revealTargets = Array.from(
+      document.querySelectorAll("main section, main section article, footer .container > *"),
+    );
+
+    revealTargets.forEach((el) => el.classList.add("reveal"));
+
+    if (reduceMotion) {
+      revealTargets.forEach((el) => el.classList.add("is-visible"));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -5% 0px" },
+      );
+
+      revealTargets.forEach((el) => observer.observe(el));
+    }
+  </script>
 </BaseLayout>

@@ -12,6 +12,18 @@ export type Percorso = {
   certifications: CertificationLevel[];
 };
 
+export type ProgramSession = {
+  date: string;
+  master: string;
+  image: string;
+  lessonPlaceholder: string;
+};
+
+export type ProgramTrack = {
+  name: string;
+  sessions: ProgramSession[];
+};
+
 export const pageContent = {
   brand: "Beauty Line Academy",
   siteUrl: "https://www.beautylineprofessional.com/",
@@ -29,6 +41,8 @@ export const pageContent = {
   },
   comparisonIntro:
     "Confronta i due percorsi e scegli quello piu adatto al tuo prossimo livello professionale.",
+  programIntro:
+    "Una programmazione distribuita su piu giornate con master dedicati, ispirata a un format evento intensivo.",
   masterAwardDay: {
     title: "Master Award Day",
     date: "11 Aprile",
@@ -63,6 +77,8 @@ export const pageContent = {
     "Valutazione su struttura, precisione, pulizia ed equilibrio",
     "Focus su limatura e rifinitura professionale",
   ],
+  programSectionTitle: "Il Programma",
+  lessonPlaceholderLabel: "Tecnica del giorno (placeholder)",
   whyParticipate:
     "Non e un semplice corso: e un percorso di crescita concreta per migliorare tecnica, confronto professionale e riconoscimento reale delle competenze.",
   urgency:
@@ -138,7 +154,93 @@ export const percorsi: Percorso[] = [
   },
 ];
 
+export const programTracks: ProgramTrack[] = [
+  {
+    name: "Percorso Master Pro",
+    sessions: [
+      {
+        date: "24 Gennaio",
+        master: "Yullia Bilichenco",
+        image: "/images/master_01.webp",
+        lessonPlaceholder: "Inserire tecnica ufficiale del 24 Gennaio",
+      },
+      {
+        date: "25 Gennaio",
+        master: "Valentina Petrocco",
+        image: "/images/master_02.webp",
+        lessonPlaceholder: "Inserire tecnica ufficiale del 25 Gennaio",
+      },
+      {
+        date: "14 Febbraio",
+        master: "Facio Billoni",
+        image: "/images/master_03.webp",
+        lessonPlaceholder: "Inserire tecnica ufficiale del 14 Febbraio",
+      },
+      {
+        date: "15 Febbraio",
+        master: "Serjey",
+        image: "/images/master_04.webp",
+        lessonPlaceholder: "Inserire tecnica ufficiale del 15 Febbraio",
+      },
+      {
+        date: "14 Marzo",
+        master: "Ildiko",
+        image: "/images/master_05.webp",
+        lessonPlaceholder: "Inserire tecnica ufficiale del 14 Marzo",
+      },
+      {
+        date: "15 Marzo",
+        master: "Irina Primo",
+        image: "/images/master_06.webp",
+        lessonPlaceholder: "Inserire tecnica ufficiale del 15 Marzo",
+      },
+    ],
+  },
+  {
+    name: "Percorso Master Experience",
+    sessions: [
+      {
+        date: "20 Febbraio",
+        master: "Toxyc",
+        image: "/images/master_07.webp",
+        lessonPlaceholder: "Inserire tecnica ufficiale del 20 Febbraio",
+      },
+      {
+        date: "21 Febbraio",
+        master: "Mariann Molinar",
+        image: "/images/master_08.webp",
+        lessonPlaceholder: "Inserire tecnica ufficiale del 21 Febbraio",
+      },
+      {
+        date: "22 Febbraio",
+        master: "Tanya Povescaia",
+        image: "/images/master_09.webp",
+        lessonPlaceholder: "Inserire tecnica ufficiale del 22 Febbraio",
+      },
+      {
+        date: "20 Marzo",
+        master: "Moruz Dama",
+        image: "/images/master_10.webp",
+        lessonPlaceholder: "Inserire tecnica ufficiale del 20 Marzo",
+      },
+      {
+        date: "21 Marzo",
+        master: "Cabriales",
+        image: "/images/master_11.webp",
+        lessonPlaceholder: "Inserire tecnica ufficiale del 21 Marzo",
+      },
+      {
+        date: "22 Marzo",
+        master: "Mimo London",
+        image: "/images/master_12.webp",
+        lessonPlaceholder: "Inserire tecnica ufficiale del 22 Marzo",
+      },
+    ],
+  },
+];
+
 export const sectionAnchors = {
+  percorsi: "percorsi",
   programma: "programma",
   requisiti: "requisiti",
   faq: "faq",
