@@ -42,7 +42,7 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
         <div class="grid two-col" style="margin-top: 24px;">
           {percorsi.map((percorso) => (
             <article class="card content-card">
-              <p class="eyebrow">{percorso.name}</p>
+              <p class="percorso-name">{percorso.name}</p>
               <h3>{percorso.subtitle}</h3>
               <p>{percorso.description}</p>
               <h4>Date percorso</h4>
@@ -63,11 +63,16 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
         <p class="section-subtitle">{pageContent.programIntro}</p>
         {programTracks.map((track) => (
           <div style="margin-top: 26px;">
-            <p class="eyebrow">{track.name}</p>
+            <p class="percorso-name" style="margin-bottom: 0;">{track.name}</p>
             <div class="grid three-col" style="margin-top: 10px;">
               {track.sessions.map((session) => (
                 <article class="card schedule-card">
-                  <img src={session.image} alt={`Master ${session.master}`} loading="lazy" />
+                  <img
+                    src={session.image}
+                    alt={`Master ${session.master}`}
+                    loading="lazy"
+                    style={session.imagePosition ? `object-position: ${session.imagePosition};` : undefined}
+                  />
                   <div class="schedule-card-body">
                     <p class="eyebrow">{session.date}</p>
                     <h3>{session.master}</h3>
@@ -85,7 +90,7 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
       <section class="section">
         <div class="container grid two-col">
           <article class="card content-card">
-            <p class="eyebrow">{percorso.name}</p>
+            <p class="percorso-name">{percorso.name}</p>
             <h2 class="section-title" style="font-size: clamp(1.4rem, 2.1vw, 2rem);">{percorso.subtitle}</h2>
             <p>{percorso.description}</p>
             <h4>Cosa include</h4>

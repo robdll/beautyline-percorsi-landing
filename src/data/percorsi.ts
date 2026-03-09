@@ -17,6 +17,7 @@ export type ProgramSession = {
   master: string;
   image: string;
   lessonPlaceholder: string;
+  imagePosition?: string;
 };
 
 export type ProgramTrack = {
@@ -169,12 +170,14 @@ export const programTracks: ProgramTrack[] = [
         master: "Valentina Petrocco",
         image: "/images/master_02.webp",
         lessonPlaceholder: "Inserire tecnica ufficiale del 25 Gennaio",
+        imagePosition: "50% 3%",
       },
       {
         date: "14 Febbraio",
         master: "Facio Billoni",
         image: "/images/master_03.webp",
         lessonPlaceholder: "Inserire tecnica ufficiale del 14 Febbraio",
+        imagePosition: "50% 2%",
       },
       {
         date: "15 Febbraio",
@@ -204,6 +207,7 @@ export const programTracks: ProgramTrack[] = [
         master: "Toxyc",
         image: "/images/master_07.webp",
         lessonPlaceholder: "Inserire tecnica ufficiale del 20 Febbraio",
+        imagePosition: "50% 25%",
       },
       {
         date: "21 Febbraio",
@@ -222,12 +226,14 @@ export const programTracks: ProgramTrack[] = [
         master: "Moruz Dama",
         image: "/images/master_10.webp",
         lessonPlaceholder: "Inserire tecnica ufficiale del 20 Marzo",
+        imagePosition: "50% 95%",
       },
       {
         date: "21 Marzo",
         master: "Cabriales",
         image: "/images/master_11.webp",
         lessonPlaceholder: "Inserire tecnica ufficiale del 21 Marzo",
+        imagePosition: "50% 0%",
       },
       {
         date: "22 Marzo",

@@ -67,6 +67,15 @@ img {
   font-weight: 700;
 }
 
+.percorso-name {
+  margin: 0 0 10px;
+  font-size: clamp(1.15rem, 1.8vw, 1.6rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #6d3d22;
+  font-weight: 800;
+}
+
 .btn-row {
   display: flex;
   flex-wrap: wrap;
@@ -151,6 +160,34 @@ header.site-header {
   gap: 16px;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.header-nav a {
+  position: relative;
+  transition: color 220ms ease;
+}
+
+.header-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms ease;
+}
+
+.header-nav a:hover,
+.header-nav a:focus-visible {
+  color: var(--text);
+}
+
+.header-nav a:hover::after,
+.header-nav a:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .hero {
