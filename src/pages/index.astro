@@ -37,20 +37,40 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
 
     <section class="section" id={sectionAnchors.percorsi}>
       <div class="container">
-        <h2 class="section-title">Confronta i percorsi</h2>
+        <h2 class="section-title">{pageContent.comparisonTitle}</h2>
         <p class="section-subtitle">{pageContent.comparisonIntro}</p>
-        <div class="grid two-col" style="margin-top: 24px;">
+        <article class="card content-card shared-info-card" style="margin-top: 20px;">
+          <h3>{pageContent.sharedInfoTitle}</h3>
+          <div class="shared-feature-grid" style="margin-top: 14px;">
+            {pageContent.sharedFeatures.map((feature) => (
+              <p class="shared-feature-item">{feature}</p>
+            ))}
+          </div>
+          <p class="shared-ceremony">
+            <strong>{pageContent.openingCeremonyLabel}:</strong> {pageContent.openingCeremonyDate}
+          </p>
+        </article>
+        <div class="grid two-col percorso-cards-grid" style="margin-top: 24px;">
           {percorsi.map((percorso) => (
             <article class="card content-card">
               <p class="percorso-name">{percorso.name}</p>
-              <h3>{percorso.subtitle}</h3>
-              <p>{percorso.description}</p>
               <h4>Date percorso</h4>
-              <div class="date-list">
-                {percorso.dates.map((date) => (
-                  <span class="date-pill">{date}</span>
-                ))}
-              </div>
+              <ul class="date-master-list">
+                {programTracks
+                  .find((track) => track.name === percorso.name)
+                  ?.sessions.map((session) => (
+                    <li class="date-master-line">
+                      <span class="date-master-date">{session.date}</span>
+                      <span class="date-master-separator">-</span>
+                      <span class="date-master-name">{session.master}</span>
+                    </li>
+                  ))}
+                <li class="date-master-line">
+                  <span class="date-master-date">{pageContent.openingCeremonyDate}</span>
+                  <span class="date-master-separator">-</span>
+                  <span class="date-master-name">Festa di chiusura</span>
+                </li>
+              </ul>
             </article>
           ))}
         </div>
@@ -59,8 +79,6 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
 
     <section class="section" id={sectionAnchors.programma}>
       <div class="container">
-        <h2 class="section-title">{pageContent.programSectionTitle}</h2>
-        <p class="section-subtitle">{pageContent.programIntro}</p>
         {programTracks.map((track) => (
           <div style="margin-top: 26px;">
             <p class="percorso-name" style="margin-bottom: 0;">{track.name}</p>
@@ -105,7 +123,16 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
             <p class="section-subtitle">Valutazione finale in base al livello raggiunto.</p>
             <ul style="margin-top: 12px;">
               {percorso.certifications.map((certification) => (
-                <li><strong>{certification.level}</strong> - {certification.label}</li>
+                <li>
+                  <span
+                    class={`certification-level certification-${certification.level
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}`}
+                  >
+                    {certification.level}
+                  </span>
+                  {certification.label ? ` - ${certification.label}` : ""}
+                </li>
               ))}
             </ul>
             <div class="placeholder-media" style="margin-top: 18px; min-height: 160px;">

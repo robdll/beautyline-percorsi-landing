@@ -41,7 +41,17 @@ export const pageContent = {
     imagePlaceholder: "Sostituire con foto hero ufficiale",
   },
   comparisonIntro:
-    "Confronta i due percorsi e scegli quello piu adatto al tuo prossimo livello professionale.",
+    "Scegli il percorso che senti piu vicino ai tuoi obiettivi e inizia a costruire il tuo prossimo livello professionale.",
+  comparisonTitle: "Quale percorso fa per te?",
+  sharedInfoTitle: "Informazioni comuni ai due percorsi",
+  sharedFeatures: [
+    "6 master",
+    "6 tecniche avanzate",
+    "Kit professionale in omaggio",
+    "Merchandising Beauty Line Academy",
+  ],
+  openingCeremonyDate: "11 Aprile",
+  openingCeremonyLabel: "Festa di chiusura percorso",
   programIntro:
     "Una programmazione distribuita su piu giornate con master dedicati, ispirata a un format evento intensivo.",
   masterAwardDay: {
@@ -107,9 +117,9 @@ export const pageContent = {
     },
   ],
   leadForm: {
-    title: "Prenota il tuo colloquio orientativo",
+    title: "Parliamone insieme",
     subtitle:
-      "Compila il modulo e ti ricontattiamo con tutte le informazioni sul percorso piu adatto a te.",
+      "Compila il modulo e ti ricontattiamo per aiutarti a scegliere il percorso giusto per te.",
     submitLabel: "Invia richiesta",
     privacyText:
       "Acconsento a essere ricontattata per ricevere informazioni sui Percorsi Master.",
@@ -119,11 +129,10 @@ export const pageContent = {
 export const percorsi: Percorso[] = [
   {
     name: "Percorso Master Pro",
-    subtitle: "6 master, 6 tecniche avanzate, crescita tecnica completa",
+    subtitle: "Crescita tecnica completa",
     description:
       "Percorso esclusivo con master nazionali e internazionali, dedicato a precisione, struttura e visione professionale del lavoro.",
     highlights: [
-      "6 tecniche avanzate",
       "6 attestati di partecipazione",
       "Valutazione tecnica durante il percorso",
       "Kit professionale in omaggio",
@@ -133,7 +142,7 @@ export const percorsi: Percorso[] = [
     certifications: [
       { level: "Bronzo", label: "Attestato Tecnico" },
       { level: "Silver", label: "Attestato Tecnico Pro" },
-      { level: "Oro", label: "Attestato Master" },
+      { level: "Gold", label: "Attestato Master" },
     ],
   },
   {
@@ -149,8 +158,8 @@ export const percorsi: Percorso[] = [
     ],
     dates: ["20-21-22 Febbraio", "20-21-22 Marzo"],
     certifications: [
-      { level: "Master Gold", label: "Certificazione finale" },
-      { level: "Master Platinum", label: "Certificazione finale" },
+      { level: "Master Gold", label: "" },
+      { level: "Master Platinum", label: "" },
     ],
   },
 ];
