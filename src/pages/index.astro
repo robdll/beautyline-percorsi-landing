@@ -169,26 +169,6 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
       </section>
     ))}
 
-    <section class="section">
-      <div class="container">
-        <article class="card content-card" style="margin-bottom: 22px;">
-          <p class="eyebrow">{pageContent.certificationSection.title}</p>
-          <p>{pageContent.certificationSection.textA}</p>
-          <p>{pageContent.certificationSection.textB}</p>
-        </article>
-        <article class="card content-card">
-          <p class="eyebrow">MASTER AWARD DAY</p>
-          <h2 class="section-title">{pageContent.masterAwardDay.title}</h2>
-          <p><strong>{pageContent.masterAwardDay.date}</strong> - {pageContent.masterAwardDay.description}</p>
-          <div style="margin-top: 12px;">
-            {pageContent.masterAwardDay.bullets.map((item) => (
-              <p>{item}</p>
-            ))}
-          </div>
-        </article>
-      </div>
-    </section>
-
     <section class="section" id={sectionAnchors.requisiti}>
       <div class="container grid two-col">
         <article class="card content-card">
@@ -215,27 +195,36 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
               <li>{item}</li>
             ))}
           </ul>
+          <p style="margin-top: 14px;">Tutti gli altri prodotti verranno forniti durante i corsi.</p>
         </article>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">Cosa succede durante una giornata di master</h2>
-        <div class="grid three-col" style="margin-top: 20px;">
-          {pageContent.dayFlow.map((step) => (
-            <article class="card content-card">
-              <p>{step}</p>
-            </article>
-          ))}
-        </div>
-        <p style="margin-top: 16px;">{pageContent.dayFlowOutro}</p>
-        <article class="card content-card" style="margin-top: 22px;">
-          <h3>Perché partecipare ai Percorsi Master</h3>
+        <p class="marked-text" style="text-align: center;">Blocca il tuo posto con una caparra di soli €299</p>
+        <div class="grid two-col">
+        <article class="card content-card">
+          <h2 class="section-title">Cosa succede durante una giornata di master</h2>
+          <p>
+            Durante ogni giornata di formazione lavorerai direttamente con il Master seguendo tutte le fasi
+            della tecnica proposta.
+          </p>
+          <ul>
+            <li>Dimostrazione tecnica del Master passo dopo passo</li>
+            <li>Fase pratica guidata con applicazione immediata</li>
+            <li>Valutazione tecnica su struttura, precisione, pulizia ed equilibrio</li>
+            <li>Focus su limatura e rifinitura professionale</li>
+          </ul>
+          <p>{pageContent.dayFlowOutro}</p>
+        </article>
+        <article class="card content-card">
+          <h2 class="section-title">Perché partecipare ai Percorsi Master</h2>
           <p>{pageContent.whyParticipate}</p>
           <p><strong>{pageContent.urgency}</strong></p>
           <p class="marked-strong">{pageContent.closingStrong}</p>
         </article>
+        </div>
       </div>
     </section>
 
