@@ -124,39 +124,43 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
 
     {percorsi.map((percorso) => (
       <section class="section">
-        <div class="container grid two-col">
-          <article class="card content-card">
-            <p class="percorso-name">{percorso.name}</p>
-            <h2 class="section-title" style="font-size: clamp(1.4rem, 2.1vw, 2rem);">{percorso.subtitle}</h2>
-            <p>{percorso.description}</p>
-            <h4>Cosa include</h4>
-            <ul>
-              {percorso.highlights.map((highlight) => (
-                <li>{highlight}</li>
-              ))}
-            </ul>
-          </article>
-          <article class="card content-card">
-            <h3>Certificazione finale</h3>
-            <p class="section-subtitle">Valutazione finale in base al livello raggiunto.</p>
-            <ul style="margin-top: 12px;">
-              {percorso.certifications.map((certification) => (
-                <li>
-                  <span
-                    class={`certification-level certification-${certification.level
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")}`}
-                  >
-                    {certification.level}
-                  </span>
-                  {certification.label ? ` - ${certification.label}` : ""}
-                </li>
-              ))}
-            </ul>
-            <div class="placeholder-media" style="margin-top: 18px; min-height: 160px;">
-              Placeholder foto master / lavori corso
-            </div>
-          </article>
+        <div class="container">
+          <p class="marked-text" style="text-align: center; margin-bottom: 20px;">Solo 12 posti disponibili per ogni percorso master</p>
+          <div class="grid two-col">
+            <article class="card content-card">
+              <p class="percorso-name">{percorso.name}</p>
+              <h2 class="section-title" style="font-size: clamp(1.4rem, 2.1vw, 2rem);">{percorso.subtitle}</h2>
+              <p>{percorso.description}</p>
+              <h4>Cosa include</h4>
+              <ul>
+                {percorso.highlights.map((highlight) => (
+                  <li>{highlight}</li>
+                ))}
+              </ul>
+            </article>
+            <article class="card content-card">
+              <h3>Certificazione finale</h3>
+              <p class="section-subtitle">Durante il percorso ogni partecipante verrà valutata dai Master.</p>
+              <p class="section-subtitle">Il punteggio finale determinerà il livello della certificazione ottenuta.</p>
+              <ul style="margin-top: 12px;">
+                {percorso.certifications.map((certification) => (
+                  <li>
+                    <span
+                      class={`certification-level certification-${certification.level
+                        .toLowerCase()
+                        .replace(/\s+/g, "-")}`}
+                    >
+                      {certification.level}
+                    </span>
+                    {certification.label ? ` - ${certification.label}` : ""}
+                  </li>
+                ))}
+              </ul>
+              <div class="placeholder-media" style="margin-top: 18px; min-height: 160px;">
+                Placeholder foto master / lavori corso
+              </div>
+            </article>
+          </div>
         </div>
       </section>
     ))}
