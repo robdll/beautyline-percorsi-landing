@@ -486,8 +486,17 @@ header.site-header {
 }
 
 .small-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 0.86rem;
   color: var(--muted);
+}
+
+.small-text input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  flex: 0 0 auto;
 }
 
 footer {
