@@ -395,7 +395,32 @@ header.site-header {
   color: var(--muted);
 }
 
-.three-col > :last-child:nth-child(3n + 1) {
+.three-col > .ceremony-card:last-child {
+  grid-column: 1 / -1;
+}
+
+.ceremony-card .schedule-card-body {
+  padding: 22px 24px;
+}
+
+.ceremony-card .schedule-card-body h3 {
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.ceremony-card .schedule-card-body .eyebrow {
+  text-align: center;
+}
+
+.ceremony-card .schedule-card-body p {
+  margin-bottom: 12px;
+}
+
+.ceremony-card .schedule-card-body p:last-child {
+  margin-bottom: 0;
+}
+
+.three-col > :last-child:nth-child(3n + 1):not(.ceremony-card) {
   grid-column: 2;
 }
 
@@ -512,6 +537,10 @@ html.js .reveal.is-visible {
   }
 
   .three-col > :last-child:nth-child(3n + 1) {
+    grid-column: auto;
+  }
+
+  .three-col > .ceremony-card:last-child {
     grid-column: auto;
   }
 

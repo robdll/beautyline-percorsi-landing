@@ -19,6 +19,7 @@ export type ProgramSession = {
   image: string;
   lessonPlaceholder: string;
   imagePosition?: string;
+  isCeremony?: boolean;
 };
 
 export type ProgramTrack = {
@@ -83,6 +84,11 @@ export const pageContent = {
       "Aperitivo celebrativo per brindare insieme alla conclusione del percorso e condividere un momento speciale con tutte le partecipanti.",
     ],
   },
+  ceremonyCardParagraphs: [
+    "Una festa speciale dedicata alla conclusione dei Percorsi Master, dove celebreremo insieme il percorso formativo delle partecipanti con la consegna delle certificazioni finali e la premiazione dei livelli raggiunti.",
+    "Durante l’evento vivremo un momento di condivisione con tutte le corsiste, festeggiando insieme la crescita professionale e l’esperienza vissuta durante il percorso.",
+    "Aperitivo celebrativo per brindare insieme alla conclusione del percorso e condividere un momento speciale con tutte le partecipanti.",
+  ],
   certificationSection: {
     title: "SEZIONE CERTIFICAZIONE",
     textA: "Durante il percorso ogni partecipante verrà valutata dai Master.",
@@ -292,6 +298,7 @@ export const programTracks: ProgramTrack[] = [
         master: "Cerimonia Master Award Day",
         image: "/images/cerimonia.webp",
         lessonPlaceholder: "Evento di chiusura",
+        isCeremony: true,
       },
     ],
   },
@@ -343,6 +350,7 @@ export const programTracks: ProgramTrack[] = [
         master: "Cerimonia Master Award Day",
         image: "/images/cerimonia.webp",
         lessonPlaceholder: "Evento di chiusura",
+        isCeremony: true,
       },
     ],
   },
