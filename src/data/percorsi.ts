@@ -5,6 +5,7 @@ export type CertificationLevel = {
 
 export type Percorso = {
   name: string;
+  shortName: string;
   subtitle: string;
   description: string;
   highlights: string[];
@@ -22,6 +23,8 @@ export type ProgramSession = {
 
 export type ProgramTrack = {
   name: string;
+  description: string;
+  description2: string;
   sessions: ProgramSession[];
 };
 
@@ -65,7 +68,7 @@ export const pageContent = {
   openingCeremonyDate: "11 Aprile",
   openingCeremonyLabel: "MASTER AWARD DAY 📅 11 Aprile 🏆 Cerimonia Master Award Day",
   programIntro:
-    "Una programmazione esclusiva distribuita su più giornate formative, con Master nazionali e internazionali,Mondiali dedicati a tecniche avanzate.",
+    "Una programmazione esclusiva distribuita su più giornate formative, con Master nazionali e internazionali, Mondiali dedicati a tecniche avanzate.",
   programDetails: [
     "Ogni giornata sarà guidata da un Master diverso, che presenterà una tecnica specifica attraverso dimostrazione, pratica guidata e confronto diretto con le partecipanti.",
     "Un format formativo intenso ispirato ai grandi eventi internazionali del settore nails.",
@@ -204,6 +207,7 @@ export const pageContent = {
 export const percorsi: Percorso[] = [
   {
     name: "Percorso Master Pro",
+    shortName: "Master Pro",
     subtitle: "Crescita tecnica completa",
     description:
       "Percorso esclusivo con master nazionali e internazionali, dedicato a precisione, struttura e visione professionale del lavoro.",
@@ -222,6 +226,7 @@ export const percorsi: Percorso[] = [
   },
   {
     name: "Percorso Master Experience",
+    shortName: "Master Experience",
     subtitle: "Formazione intensiva con master internazionali",
     description:
       "Esperienza immersiva per apprendere nuove tecniche e alzare il livello professionale insieme a master di fama mondiale.",
@@ -242,6 +247,8 @@ export const percorsi: Percorso[] = [
 export const programTracks: ProgramTrack[] = [
   {
     name: "Percorso Master Pro",
+    description: "Solo 12 posti disponibili per ogni percorso master",
+    description2: "Blocca il tuo posto con una caparra di soli €299",
     sessions: [
       {
         date: "24 Gennaio",
@@ -280,10 +287,18 @@ export const programTracks: ProgramTrack[] = [
         image: "/images/master_06.webp",
         lessonPlaceholder: "NOME CORSO DA DEFINIRE",
       },
+      {
+        date: "11 Aprile",
+        master: "Cerimonia Master Award Day",
+        image: "/images/cerimonia.webp",
+        lessonPlaceholder: "Evento di chiusura",
+      },
     ],
   },
   {
     name: "Percorso Master Experience",
+    description: "Solo 12 posti disponibili per ogni percorso master",
+    description2: "Blocca il tuo posto con una caparra di soli €299",
     sessions: [
       {
         date: "20 Febbraio",
@@ -306,15 +321,15 @@ export const programTracks: ProgramTrack[] = [
       },
       {
         date: "20 MARZO",
-        master: "MASTER E CORSO DA DEFINIRE",
+        master: "MASTER DA DEFINIRE",
         image: "/images/master_10.webp",
-        lessonPlaceholder: "MASTER E CORSO DA DEFINIRE",
+        lessonPlaceholder: "MASTER DA DEFINIRE",
       },
       {
         date: "21 MARZO",
-        master: "MASTER E CORSO DA DEFINIRE",
+        master: "MASTER DA DEFINIRE",
         image: "/images/master_11.webp",
-        lessonPlaceholder: "MASTER E CORSO DA DEFINIRE",
+        lessonPlaceholder: "MASTER DA DEFINIRE",
       },
       {
         date: "22 MARZO",
@@ -322,6 +337,12 @@ export const programTracks: ProgramTrack[] = [
         image: "/images/master_12.webp",
         lessonPlaceholder: "Extreme Dragon",
         imagePosition: "50% 0%",
+      },
+      {
+        date: "11 Aprile",
+        master: "Cerimonia Master Award Day",
+        image: "/images/cerimonia.webp",
+        lessonPlaceholder: "Evento di chiusura",
       },
     ],
   },

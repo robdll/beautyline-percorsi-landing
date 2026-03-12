@@ -23,8 +23,8 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
         <div>
           <p class="eyebrow">{pageContent.hero.eyebrow}</p>
           <h1>{pageContent.hero.title}</h1>
-          <p>{pageContent.hero.description}</p>
           <p class="marked-text">{pageContent.hero.depositLine}</p>
+          <p>{pageContent.hero.description}</p>
           <p class="marked-strong">{pageContent.hero.limitedSeats}</p>
           <div class="btn-row">
             <a class="btn btn-primary" href={`#${sectionAnchors.contatti}`}>{pageContent.hero.ctaPrimary}</a>
@@ -53,25 +53,10 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
       <div class="container">
         <h2 class="section-title">{pageContent.comparisonTitle}</h2>
         <p class="section-subtitle">{pageContent.comparisonIntro}</p>
-        <!-- Temporarily hidden as requested -->
-        <!--
-        <article class="card content-card shared-info-card" style="margin-top: 20px;">
-          <h3>{pageContent.sharedInfoTitle}</h3>
-          <div class="shared-feature-grid" style="margin-top: 14px;">
-            {pageContent.sharedFeatures.map((feature) => (
-              <p class="shared-feature-item">{feature}</p>
-            ))}
-          </div>
-          <p class="shared-strong-line">{pageContent.sharedInfoStrong}</p>
-          <p class="shared-ceremony">
-            <strong>{pageContent.openingCeremonyLabel}:</strong> {pageContent.openingCeremonyDate}
-          </p>
-        </article>
-        -->
         <div class="grid two-col percorso-cards-grid" style="margin-top: 24px;">
           {percorsi.map((percorso) => (
             <article class="card content-card">
-              <p class="percorso-name">{percorso.name}</p>
+              <p class="percorso-name">{percorso.shortName}</p>
               <h4>Date percorso</h4>
               <ul class="date-master-list">
                 {programTracks
@@ -87,6 +72,18 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
             </article>
           ))}
         </div>
+        <article class="card content-card shared-info-card" style="margin-top: 20px;">
+          <h3>{pageContent.sharedInfoTitle}</h3>
+          <div class="shared-feature-grid" style="margin-top: 14px;">
+            {pageContent.sharedFeatures.map((feature) => (
+              <p class="shared-feature-item">{feature}</p>
+            ))}
+          </div>
+          <p class="shared-strong-line">{pageContent.sharedInfoStrong}</p>
+          <p class="shared-ceremony">
+            <strong>{pageContent.openingCeremonyLabel}:</strong> {pageContent.openingCeremonyDate}
+          </p>
+        </article>
       </div>
     </section>
 
@@ -101,6 +98,8 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
         {programTracks.map((track) => (
           <div style="margin-top: 26px;">
             <p class="percorso-name percorso-name-program" style="margin-bottom: 0;">{track.name}</p>
+            <p class="marked-text" style="text-align: center;">{track.description}</p>
+            <p class="marked-text" style="text-align: center;">{track.description2}</p>
             <div class="grid three-col" style="margin-top: 10px;">
               {track.sessions.map((session) => (
                 <article class="card schedule-card">
