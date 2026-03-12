@@ -1,11 +1,11 @@
 :root {
-  --bg: #f6f0eb;
+  --bg: #e9ddff;
   --surface: #fffdfb;
   --surface-strong: #ffffff;
   --text: #1f1a17;
   --muted: #6f645d;
-  --primary: #a86b43;
-  --primary-dark: #875130;
+  --primary: #c9a227;
+  --primary-dark: #a88417;
   --border: #e4d7cd;
   --radius-sm: 10px;
   --radius-md: 16px;
@@ -152,7 +152,7 @@ header.site-header {
   position: sticky;
   top: 0;
   backdrop-filter: blur(8px);
-  background: rgba(246, 240, 235, 0.88);
+  background: rgba(255, 255, 255, 0.88);
   border-bottom: 1px solid var(--border);
   z-index: 10;
 }
