@@ -69,12 +69,16 @@ img {
 
 .percorso-name {
   margin: 0 0 10px;
-  font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+  font-size: clamp(1.82rem, 2vw, 1.9rem);
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #6d3d22;
   font-weight: 800;
   text-align: center;
+}
+
+.percorso-name-program {
+  font-size: clamp(2.0rem, 2.2vw, 1.9rem);
 }
 
 .btn-row {
@@ -208,15 +212,42 @@ header.site-header {
 
 .hero h1 {
   margin: 8px 0 16px;
-  font-size: clamp(2.2rem, 4.4vw, 4.2rem);
+  font-size: clamp(2.5rem, 4.9vw, 4.6rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
+}
+
+.hero .eyebrow {
+  margin: 0 0 8px;
+  font-size: clamp(0.98rem, 1.4vw, 1.25rem);
+  letter-spacing: 0.06em;
+  line-height: 1.35;
 }
 
 .hero p {
   margin: 0 0 22px;
   color: var(--muted);
   max-width: 60ch;
+}
+
+.marked-text {
+  margin: 0 0 14px;
+  font-weight: 700;
+  color: #4f2e1a;
+}
+
+.marked-strong {
+  margin: 0 0 14px;
+  font-weight: 800;
+  color: #2a1d15;
+}
+
+.strong-black-line {
+  margin: 0 0 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #111111;
 }
 
 .metric-list {
@@ -262,6 +293,13 @@ header.site-header {
   padding: 12px 14px;
   font-weight: 700;
   color: #663f25;
+}
+
+.shared-strong-line {
+  margin: 16px 0 0;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #2a1d15;
 }
 
 .shared-ceremony {
@@ -355,6 +393,10 @@ header.site-header {
 .schedule-card-body p {
   margin: 0;
   color: var(--muted);
+}
+
+.three-col > :last-child:nth-child(3n + 1) {
+  grid-column: 2;
 }
 
 .date-list {
@@ -467,6 +509,10 @@ html.js .reveal.is-visible {
 
   .shared-feature-grid {
     grid-template-columns: 1fr;
+  }
+
+  .three-col > :last-child:nth-child(3n + 1) {
+    grid-column: auto;
   }
 
   .section {

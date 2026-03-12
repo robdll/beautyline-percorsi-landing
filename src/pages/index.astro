@@ -24,6 +24,8 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
           <p class="eyebrow">{pageContent.hero.eyebrow}</p>
           <h1>{pageContent.hero.title}</h1>
           <p>{pageContent.hero.description}</p>
+          <p class="marked-text">{pageContent.hero.depositLine}</p>
+          <p class="marked-strong">{pageContent.hero.limitedSeats}</p>
           <div class="btn-row">
             <a class="btn btn-primary" href={`#${sectionAnchors.contatti}`}>{pageContent.hero.ctaPrimary}</a>
             <a class="btn btn-secondary" href={`#${sectionAnchors.programma}`}>{pageContent.hero.ctaSecondary}</a>
@@ -35,10 +37,24 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
       </div>
     </section>
 
+    <section class="section">
+      <div class="container">
+        <article class="card content-card">
+          {pageContent.hero.introParagraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+          <p class="strong-black-line">{pageContent.hero.strongLine}</p>
+          <p class="marked-text">{pageContent.hero.depositLine}</p>
+        </article>
+      </div>
+    </section>
+
     <section class="section" id={sectionAnchors.percorsi}>
       <div class="container">
         <h2 class="section-title">{pageContent.comparisonTitle}</h2>
         <p class="section-subtitle">{pageContent.comparisonIntro}</p>
+        <!-- Temporarily hidden as requested -->
+        <!--
         <article class="card content-card shared-info-card" style="margin-top: 20px;">
           <h3>{pageContent.sharedInfoTitle}</h3>
           <div class="shared-feature-grid" style="margin-top: 14px;">
@@ -46,10 +62,12 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
               <p class="shared-feature-item">{feature}</p>
             ))}
           </div>
+          <p class="shared-strong-line">{pageContent.sharedInfoStrong}</p>
           <p class="shared-ceremony">
             <strong>{pageContent.openingCeremonyLabel}:</strong> {pageContent.openingCeremonyDate}
           </p>
         </article>
+        -->
         <div class="grid two-col percorso-cards-grid" style="margin-top: 24px;">
           {percorsi.map((percorso) => (
             <article class="card content-card">
@@ -65,11 +83,6 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
                       <span class="date-master-name">{session.master}</span>
                     </li>
                   ))}
-                <li class="date-master-line">
-                  <span class="date-master-date">{pageContent.openingCeremonyDate}</span>
-                  <span class="date-master-separator">-</span>
-                  <span class="date-master-name">Festa di chiusura</span>
-                </li>
               </ul>
             </article>
           ))}
@@ -79,9 +92,15 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
 
     <section class="section" id={sectionAnchors.programma}>
       <div class="container">
+        <h2 class="section-title">{pageContent.programSectionTitle}</h2>
+        <p class="marked-text">{pageContent.hero.depositLine}</p>
+        <p class="section-subtitle">{pageContent.programIntro}</p>
+        {pageContent.programDetails.map((line) => (
+          <p>{line}</p>
+        ))}
         {programTracks.map((track) => (
           <div style="margin-top: 26px;">
-            <p class="percorso-name" style="margin-bottom: 0;">{track.name}</p>
+            <p class="percorso-name percorso-name-program" style="margin-bottom: 0;">{track.name}</p>
             <div class="grid three-col" style="margin-top: 10px;">
               {track.sessions.map((session) => (
                 <article class="card schedule-card">
@@ -145,21 +164,19 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
 
     <section class="section">
       <div class="container">
+        <article class="card content-card" style="margin-bottom: 22px;">
+          <p class="eyebrow">{pageContent.certificationSection.title}</p>
+          <p>{pageContent.certificationSection.textA}</p>
+          <p>{pageContent.certificationSection.textB}</p>
+        </article>
         <article class="card content-card">
-          <p class="eyebrow">Evento conclusivo</p>
+          <p class="eyebrow">MASTER AWARD DAY</p>
           <h2 class="section-title">{pageContent.masterAwardDay.title}</h2>
           <p><strong>{pageContent.masterAwardDay.date}</strong> - {pageContent.masterAwardDay.description}</p>
-          <div class="grid two-col" style="margin-top: 12px;">
-            <ul>
-              {pageContent.masterAwardDay.bullets.slice(0, 3).map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-            <ul>
-              {pageContent.masterAwardDay.bullets.slice(3).map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
+          <div style="margin-top: 12px;">
+            {pageContent.masterAwardDay.bullets.map((item) => (
+              <p>{item}</p>
+            ))}
           </div>
         </article>
       </div>
@@ -169,17 +186,23 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
       <div class="container grid two-col">
         <article class="card content-card">
           <h2 class="section-title">Requisiti di partecipazione</h2>
-          <p class="section-subtitle">E necessario aver completato almeno uno dei seguenti corsi:</p>
+          <p>{pageContent.requirementsIntro}</p>
+          <p class="section-subtitle">Per partecipare è necessario aver completato almeno uno dei seguenti corsi:</p>
           <ul style="margin-top: 12px;">
             {pageContent.requirements.map((item) => (
               <li>{item}</li>
             ))}
           </ul>
-          <p style="margin-top: 14px;">{pageContent.preMaster}</p>
+          <h3>{pageContent.requirementsEvaluationTitle}</h3>
+          <p>{pageContent.requirementsEvaluation}</p>
+          <h3>{pageContent.preMasterTitle}</h3>
+          <p>{pageContent.preMaster}</p>
         </article>
         <article class="card content-card">
-          <h2 class="section-title">Materiali e attrezzatura</h2>
-          <p class="section-subtitle">Ogni partecipante riceve un kit completo. Porta solo:</p>
+          <h2 class="section-title">{pageContent.materialsTitle}</h2>
+          <p>{pageContent.materialsIntro}</p>
+          <h3>{pageContent.materialsCarryTitle}</h3>
+          <p class="section-subtitle">{pageContent.materialsCarryText}</p>
           <ul style="margin-top: 12px;">
             {pageContent.materials.map((item) => (
               <li>{item}</li>
@@ -199,10 +222,12 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
             </article>
           ))}
         </div>
+        <p style="margin-top: 16px;">{pageContent.dayFlowOutro}</p>
         <article class="card content-card" style="margin-top: 22px;">
-          <h3>Perche partecipare ai Percorsi Master</h3>
+          <h3>Perché partecipare ai Percorsi Master</h3>
           <p>{pageContent.whyParticipate}</p>
           <p><strong>{pageContent.urgency}</strong></p>
+          <p class="marked-strong">{pageContent.closingStrong}</p>
         </article>
       </div>
     </section>
@@ -224,9 +249,9 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
     <section class="section" id={sectionAnchors.contatti}>
       <div class="container">
         <article class="card lead-wrap">
-          <p class="eyebrow">Prenota ora</p>
           <h2 class="section-title" style="margin-bottom: 10px;">{pageContent.leadForm.title}</h2>
           <p class="section-subtitle">{pageContent.leadForm.subtitle}</p>
+          <p class="marked-strong">{pageContent.leadForm.limitedSeatsLine}</p>
 
           <form class="lead-form" action="#" method="post">
             <input name="nome" type="text" placeholder="Nome e cognome" />
