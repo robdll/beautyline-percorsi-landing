@@ -208,6 +208,22 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
                     {session.isCeremony
                       ? pageContent.ceremonyCardParagraphs.map((paragraph) => <p>{paragraph}</p>)
                       : <p>{session.lessonPlaceholder}</p>}
+                    {!session.isCeremony && (
+                      <button
+                        class="btn btn-secondary schedule-card-action"
+                        type="button"
+                        data-open-master-modal
+                        data-track-name={track.name}
+                        data-course-name={session.lessonPlaceholder}
+                        data-master-name={session.master}
+                        data-course-date={session.date}
+                        data-start-time="09:00"
+                        data-end-time="18:00"
+                        data-main-image={session.image}
+                      >
+                        Scopri
+                      </button>
+                    )}
                   </div>
                 </article>
               ))}
@@ -394,6 +410,27 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
     </section>
   </main>
 
+  <div class="master-modal" data-master-modal hidden>
+    <div class="master-modal-backdrop" data-close-master-modal></div>
+    <div class="master-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="master-modal-title">
+      <button type="button" class="master-modal-close" aria-label="Chiudi" data-close-master-modal>&times;</button>
+      <div class="master-carousel">
+        <button type="button" class="carousel-control" aria-label="Immagine precedente" data-carousel-prev>
+          &#8249;
+        </button>
+        <img src="" alt="" class="master-carousel-image" data-carousel-image />
+        <button type="button" class="carousel-control" aria-label="Immagine successiva" data-carousel-next>
+          &#8250;
+        </button>
+      </div>
+      <div class="master-modal-info">
+        <p class="eyebrow" data-modal-track></p>
+        <h3 id="master-modal-title" data-modal-title></h3>
+        <p data-modal-description></p>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="container">
       <p>
@@ -412,6 +449,7 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
     const headerNav = document.querySelector("[data-header-nav]");
     const leadForm = document.querySelector("[data-lead-form]");
     const statusMessage = document.querySelector("[data-form-status]");
+    const masterModal = document.querySelector("[data-master-modal]");
 
     if (navToggle instanceof HTMLButtonElement && headerNav instanceof HTMLElement) {
       const closeMenu = () => {
@@ -469,6 +507,99 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
           statusMessage.dataset.status = "error";
         } finally {
           submitButton.disabled = false;
+        }
+      });
+    }
+
+    if (masterModal instanceof HTMLElement) {
+      const openButtons = document.querySelectorAll("[data-open-master-modal]");
+      const closeButtons = masterModal.querySelectorAll("[data-close-master-modal]");
+      const titleEl = masterModal.querySelector("[data-modal-title]");
+      const descriptionEl = masterModal.querySelector("[data-modal-description]");
+      const trackEl = masterModal.querySelector("[data-modal-track]");
+      const carouselImageEl = masterModal.querySelector("[data-carousel-image]");
+      const prevButton = masterModal.querySelector("[data-carousel-prev]");
+      const nextButton = masterModal.querySelector("[data-carousel-next]");
+
+      let carouselImages: string[] = [];
+      let currentSlide = 0;
+
+      const renderSlide = () => {
+        if (!(carouselImageEl instanceof HTMLImageElement)) return;
+        if (carouselImages.length === 0) return;
+
+        carouselImageEl.src = carouselImages[currentSlide];
+        carouselImageEl.alt = `Slide ${currentSlide + 1}`;
+      };
+
+      const closeMasterModal = () => {
+        masterModal.setAttribute("hidden", "");
+        document.body.style.overflow = "";
+      };
+
+      const openMasterModal = (button: HTMLElement) => {
+        if (
+          !(titleEl instanceof HTMLElement) ||
+          !(descriptionEl instanceof HTMLParagraphElement) ||
+          !(trackEl instanceof HTMLElement)
+        ) {
+          return;
+        }
+
+        const courseName = button.dataset.courseName || "Corso da definire";
+        const masterName = button.dataset.masterName || "Master da definire";
+        const courseDate = button.dataset.courseDate || "data da definire";
+        const startTime = button.dataset.startTime || "09:00";
+        const endTime = button.dataset.endTime || "18:00";
+        const trackName = button.dataset.trackName || "";
+        const mainImage = button.dataset.mainImage || "/images/logo-circle.png";
+        const isSeulCourse = courseName.trim().toLowerCase() === "seul";
+
+        carouselImages = isSeulCourse
+          ? [mainImage, "/images/seul-1.jpeg", "/images/logo-circle.png"]
+          : [mainImage, "/images/logo-circle.png", "/images/logo-bl.png"];
+        currentSlide = 0;
+        renderSlide();
+
+        titleEl.textContent = `${courseName} - ${masterName}`;
+        trackEl.textContent = trackName;
+        descriptionEl.textContent = `Il corso ${courseName} del Master ${masterName} si terrà il giorno ${courseDate} dalle ore ${startTime} alle ${endTime}.`;
+        masterModal.removeAttribute("hidden");
+        document.body.style.overflow = "hidden";
+      };
+
+      openButtons.forEach((button) => {
+        if (!(button instanceof HTMLElement)) return;
+
+        button.addEventListener("click", () => {
+          openMasterModal(button);
+        });
+      });
+
+      closeButtons.forEach((button) => {
+        if (!(button instanceof HTMLElement)) return;
+        button.addEventListener("click", closeMasterModal);
+      });
+
+      if (prevButton instanceof HTMLButtonElement) {
+        prevButton.addEventListener("click", () => {
+          if (carouselImages.length === 0) return;
+          currentSlide = (currentSlide - 1 + carouselImages.length) % carouselImages.length;
+          renderSlide();
+        });
+      }
+
+      if (nextButton instanceof HTMLButtonElement) {
+        nextButton.addEventListener("click", () => {
+          if (carouselImages.length === 0) return;
+          currentSlide = (currentSlide + 1) % carouselImages.length;
+          renderSlide();
+        });
+      }
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !masterModal.hasAttribute("hidden")) {
+          closeMasterModal();
         }
       });
     }

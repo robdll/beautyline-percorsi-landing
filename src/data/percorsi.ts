@@ -340,7 +340,7 @@ export const programTracks: ProgramTrack[] = [
         date: "22 MARZO",
         master: "Master MIMO VO",
         image: "/images/master_12.webp",
-        lessonPlaceholder: "Extreme Dragon",
+        lessonPlaceholder: "Seul",
         imagePosition: "50% 0%",
       },
       {

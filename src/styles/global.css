@@ -447,6 +447,8 @@ header.site-header {
   background: #efe3d9;
   transition: transform 420ms ease;
   transform-origin: center center;
+  position: relative;
+  z-index: 0;
 }
 
 .schedule-card:hover img,
@@ -456,15 +458,29 @@ header.site-header {
 
 .schedule-card-body {
   padding: 16px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+  background: var(--surface-strong);
 }
 
 .schedule-card-body h3 {
-  margin: 2px 0 8px;
+  margin: 2px 0 0;
 }
 
 .schedule-card-body p {
   margin: 0;
   color: var(--muted);
+}
+
+.schedule-card-action {
+  margin-top: auto;
+  align-self: flex-end;
+  padding: 8px 16px;
+  font-size: 0.92rem;
+  cursor: pointer;
 }
 
 .three-col > .ceremony-card:last-child {
@@ -587,6 +603,114 @@ header.site-header {
 
 .form-status-message[data-status="error"] {
   color: #b91c1c;
+}
+
+.master-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.master-modal[hidden] {
+  display: none;
+}
+
+.master-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 13, 9, 0.62);
+}
+
+.master-modal-dialog {
+  position: relative;
+  width: min(840px, 100%);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+
+.master-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.92);
+  color: #3f2d22;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.master-carousel {
+  position: relative;
+  background: #f3ece5;
+  height: min(60vh, 520px);
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 56px;
+  overflow: hidden;
+}
+
+.master-carousel-image {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  background: #ece3da;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(31, 26, 23, 0.52);
+  color: #fff;
+  font-size: 1.45rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.carousel-control[data-carousel-prev] {
+  left: 12px;
+}
+
+.carousel-control[data-carousel-next] {
+  right: 12px;
+}
+
+.master-modal-info {
+  padding: 20px 22px 24px;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 2;
+}
+
+.master-modal-info h3 {
+  margin: 2px 0 10px;
+}
+
+.master-modal-info p {
+  margin: 0;
+  color: var(--muted);
 }
 
 footer {
