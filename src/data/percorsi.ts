@@ -39,7 +39,7 @@ export const pageContent = {
     title: "Scegli il tuo Percorso Master",
     description:
       "Beauty Line Academy presenta due percorsi formativi esclusivi con Master nazionali, internazionali e mondiali, dedicati alle onicotecniche che vogliono portare la propria tecnica a un livello superiore.",
-    depositLine: "Blocca il tuo posto con una caparra di soli €299",
+    depositLine: "Assicurati il tuo posto con una quota di iscrizione di €299.",
     limitedSeats: "Classi a numero chiuso Solo 12 posti disponibili per ogni percorso master",
     introParagraphs: [
       "Beauty Line Academy ha creato due percorsi formativi esclusivi pensati per le onicotecniche che desiderano crescere professionalmente, perfezionare la propria tecnica e confrontarsi con alcuni dei migliori Master nazionali, internazionali e mondiali del settore nails.",
@@ -223,9 +223,9 @@ export const percorsi: Percorso[] = [
     ],
     dates: ["24-25 Gennaio", "14-15 Febbraio", "14-15 Marzo"],
     certifications: [
-      { level: "Bronze", label: "Attestato Tecnico" },
-      { level: "Silver", label: "Attestato Tecnico Expert" },
-      { level: "Gold", label: "Attestato Master" },
+      { level: "Bronze", label: "Tecnico" },
+      { level: "Silver", label: "Tecnico Expert" },
+      { level: "Gold", label: "Master" },
     ],
   },
   {
@@ -242,8 +242,8 @@ export const percorsi: Percorso[] = [
     ],
     dates: ["20-21-22 Febbraio", "20-21-22 Marzo"],
     certifications: [
-      { level: "Master expert Gold", label: "" },
-      { level: "Master advanced Platinum", label: "" },
+      { level: "Master Experience", label: "Gold" },
+      { level: "Master Experience Expert", label: "Platinum" },
     ],
   },
 ];
@@ -252,7 +252,7 @@ export const programTracks: ProgramTrack[] = [
   {
     name: "Percorso Master Pro",
     description: "Solo 12 posti disponibili per ogni percorso master",
-    description2: "Blocca il tuo posto con una caparra di soli €299",
+    description2: "Assicurati il tuo posto con una quota di iscrizione di €299.",
     sessions: [
       {
         date: "24 Gennaio",
@@ -303,7 +303,7 @@ export const programTracks: ProgramTrack[] = [
   {
     name: "Percorso Master Experience",
     description: "Solo 12 posti disponibili per ogni percorso master",
-    description2: "Blocca il tuo posto con una caparra di soli €299",
+    description2: "Assicurati il tuo posto con una quota di iscrizione di €299.",
     sessions: [
       {
         date: "20 Febbraio",

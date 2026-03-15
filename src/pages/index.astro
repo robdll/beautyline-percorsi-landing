@@ -361,7 +361,7 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
 
     <section class="section">
       <div class="container">
-        <p class="marked-text" style="text-align: center;">Blocca il tuo posto con una caparra di soli €299</p>
+        <p class="marked-text" style="text-align: center;">Assicurati il tuo posto con una quota di iscrizione di €299.</p>
         <div class="grid two-col">
         <article class="card content-card">
           <h2 class="section-title">Cosa succede durante una giornata di master</h2>
@@ -407,7 +407,7 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
           <h2 class="section-title" style="margin-bottom: 10px;">{pageContent.leadForm.title}</h2>
           <p class="section-subtitle">{pageContent.leadForm.subtitle}</p>
           <p class="marked-strong">{pageContent.leadForm.limitedSeatsLine}</p>
-          <p class="marked-text">Blocca il tuo posto con una caparra di soli €299</p>
+          <p class="marked-text">Assicurati il tuo posto con una quota di iscrizione di €299.</p>
 
           <form class="lead-form" action="#" method="post">
             <input name="nome" type="text" placeholder="Nome e cognome" />
@@ -436,30 +436,4 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
     </div>
   </footer>
 
-  <script is:inline>
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const revealTargets = Array.from(
-      document.querySelectorAll("main section, main section article, footer .container > *"),
-    );
-
-    revealTargets.forEach((el) => el.classList.add("reveal"));
-
-    if (reduceMotion) {
-      revealTargets.forEach((el) => el.classList.add("is-visible"));
-    } else {
-      const observer = new IntersectionObserver(
-        (entries, obs) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              obs.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.15, rootMargin: "0px 0px -5% 0px" },
-      );
-
-      revealTargets.forEach((el) => observer.observe(el));
-    }
-  </script>
 </BaseLayout>

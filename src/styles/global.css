@@ -536,32 +536,8 @@ footer {
   color: var(--muted);
 }
 
-.reveal {
-  opacity: 1;
-  transform: none;
-}
-
-html.js .reveal {
-  opacity: 0;
-  transform: translateY(20px) scale(0.97);
-  transition: opacity 560ms ease, transform 560ms ease;
-  will-change: opacity, transform;
-}
-
-html.js .reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .schedule-card img {
-    transition: none;
-  }
-
-  html.js .reveal,
-  html.js .reveal.is-visible {
-    opacity: 1;
-    transform: none;
     transition: none;
   }
 }
