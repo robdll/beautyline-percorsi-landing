@@ -74,14 +74,48 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
         </div>
         <article class="card content-card shared-info-card" style="margin-top: 20px;">
           <h3>{pageContent.sharedInfoTitle}</h3>
-          <div class="shared-feature-grid" style="margin-top: 14px;">
-            {pageContent.sharedFeatures.map((feature) => (
-              <p class="shared-feature-item">{feature}</p>
-            ))}
+          <div class="shared-feature-top-cards" style="margin-top: 14px;">
+            {pageContent.sharedFeatures.slice(0, 3).map((feature) => {
+              const match = feature.match(/^(\d+)\s+(.+)$/);
+              const amount = match?.[1] ?? "";
+              const label = match?.[2] ?? feature;
+
+              return (
+                <article class="shared-number-card">
+                  {amount && <span class="shared-number-value">{amount}</span>}
+                  <span class="shared-number-label">{label}</span>
+                </article>
+              );
+            })}
           </div>
-          <p class="shared-strong-line">{pageContent.sharedInfoStrong}</p>
+          <ul class="shared-feature-list">
+            {pageContent.sharedFeatures.slice(3).map((feature) => {
+              if (feature.startsWith("Kit professionale")) {
+                return (
+                  <li>
+                    + <strong>Kit professionale</strong>
+                    {feature.replace("Kit professionale", "")}
+                  </li>
+                );
+              }
+
+              if (feature.startsWith("Gadget e merchandising")) {
+                return (
+                  <li>
+                    + <strong>Gadget e merchandising</strong>
+                    {feature.replace("Gadget e merchandising", "")}
+                  </li>
+                );
+              }
+
+              return <li>+ {feature}</li>;
+            })}
+          </ul>
+          <p class="shared-strong-line">
+            + <strong>Attestato</strong> {pageContent.sharedInfoStrong.replace(/^Attestato\s*/i, "")}
+          </p>
           <p class="shared-ceremony">
-            <strong>{pageContent.openingCeremonyLabel}:</strong> {pageContent.openingCeremonyDate}
+            {pageContent.openingCeremonyLabel}: {pageContent.openingCeremonyDate}
           </p>
         </article>
       </div>

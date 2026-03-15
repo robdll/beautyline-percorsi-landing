@@ -62,12 +62,10 @@ export const pageContent = {
     "6 attestati di partecipazione",
     "Kit professionale in omaggio FIRMATO CHRIS NAILS",
     "Gadget e merchandising esclusivo",
-    "Formazione pratica intensiva",
-    "Confronto diretto con Master nazionali e internazionali e mondiali",
   ],
-  sharedInfoStrong: "ATTESTATI BRONZESILVERGOLD *PLATINUM",
+  sharedInfoStrong: "Attestato di partecipazione",
   openingCeremonyDate: "11 Aprile",
-  openingCeremonyLabel: "MASTER AWARD DAY 📅 11 Aprile 🏆 Cerimonia Master Award Day",
+  openingCeremonyLabel: "🏆 Cerimonia Master Award Day",
   programIntro:
     "Una programmazione esclusiva distribuita su più giornate formative, con Master nazionali e internazionali, Mondiali dedicati a tecniche avanzate.",
   programDetails: [
@@ -128,7 +126,7 @@ export const pageContent = {
     "Valutazione su struttura, precisione, pulizia ed equilibrio",
     "Focus su limatura e rifinitura professionale",
   ],
-  programSectionTitle: "Il Programma",
+  programSectionTitle: "Scorpri il Programma",
   lessonPlaceholderLabel: "Tecnica del giorno",
   dayFlowOutro:
     "Un’esperienza formativa completa per migliorare realmente la propria tecnica.",
