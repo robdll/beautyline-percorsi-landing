@@ -2,7 +2,7 @@ import type { APIRoute } from "astro";
 import { Resend } from "resend";
 
 const destinationEmail = "info@beautylineprofessional.com";
-const fromEmail = "Percorsi Master <onboarding@resend.dev>";
+const fromEmail = "Percorsi Master <noreply@robdll.com>";
 
 export const prerender = false;
 
