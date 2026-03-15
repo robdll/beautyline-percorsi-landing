@@ -6,7 +6,9 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
 <BaseLayout title="Percorsi Master | Beauty Line Academy" description={pageContent.hero.description}>
   <header class="site-header">
     <div class="container header-inner">
-      <strong>{pageContent.brand}</strong>
+      <a href="#" class="brand-logo-link" aria-label={pageContent.brand}>
+        <img src="/images/logo-circle.png" alt={pageContent.brand} class="brand-logo brand-logo-header" />
+      </a>
       <nav class="header-nav">
         <a href={`#${sectionAnchors.percorsi}`}>Percorsi</a>
         <a href={`#${sectionAnchors.programma}`}>Programma</a>
@@ -428,7 +430,9 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
 
   <footer>
     <div class="container">
-      <p><strong>{pageContent.brand}</strong></p>
+      <p>
+        <img src="/images/logo-bl.png" alt={pageContent.brand} class="brand-logo brand-logo-footer" />
+      </p>
       <p>{pageContent.contactAddress}</p>
       <p>Info e iscrizioni: {pageContent.contactPhone}</p>
       <p>

@@ -164,6 +164,24 @@ header.site-header {
   justify-content: space-between;
 }
 
+.brand-logo-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.brand-logo {
+  width: auto;
+  height: auto;
+}
+
+.brand-logo-header {
+  max-height: 56px;
+}
+
+.brand-logo-footer {
+  max-height: 94px;
+}
+
 .header-nav {
   display: flex;
   gap: 16px;
