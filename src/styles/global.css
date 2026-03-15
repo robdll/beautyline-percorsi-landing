@@ -189,6 +189,28 @@ header.site-header {
   font-size: 0.95rem;
 }
 
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.nav-toggle-bar {
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--text);
+}
+
 .header-nav a {
   position: relative;
   transition: color 220ms ease;
@@ -601,7 +623,31 @@ footer {
     padding: 58px 0;
   }
 
+  .header-inner {
+    min-height: auto;
+    padding: 10px 0;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
   .header-nav {
     display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    padding: 8px 0 4px;
+    border-top: 1px solid var(--border);
+  }
+
+  .header-nav[data-open="true"] {
+    display: flex;
+  }
+
+  .header-nav a {
+    padding: 4px 0;
   }
 }

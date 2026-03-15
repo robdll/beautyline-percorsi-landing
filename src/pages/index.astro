@@ -9,7 +9,19 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
       <a href="#" class="brand-logo-link" aria-label={pageContent.brand}>
         <img src="/images/logo-circle.png" alt={pageContent.brand} class="brand-logo brand-logo-header" />
       </a>
-      <nav class="header-nav">
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Apri menu di navigazione"
+        aria-controls="site-header-nav"
+        aria-expanded="false"
+        data-nav-toggle
+      >
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="header-nav" id="site-header-nav" data-header-nav data-open="false">
         <a href={`#${sectionAnchors.percorsi}`}>Percorsi</a>
         <a href={`#${sectionAnchors.programma}`}>Programma</a>
         <a href={`#${sectionAnchors.requisiti}`}>Requisiti</a>
@@ -396,8 +408,33 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
   </footer>
 
   <script>
+    const navToggle = document.querySelector("[data-nav-toggle]");
+    const headerNav = document.querySelector("[data-header-nav]");
     const leadForm = document.querySelector("[data-lead-form]");
     const statusMessage = document.querySelector("[data-form-status]");
+
+    if (navToggle instanceof HTMLButtonElement && headerNav instanceof HTMLElement) {
+      const closeMenu = () => {
+        navToggle.setAttribute("aria-expanded", "false");
+        headerNav.dataset.open = "false";
+      };
+
+      navToggle.addEventListener("click", () => {
+        const isExpanded = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!isExpanded));
+        headerNav.dataset.open = String(!isExpanded);
+      });
+
+      headerNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) {
+          closeMenu();
+        }
+      });
+    }
 
     if (leadForm instanceof HTMLFormElement && statusMessage instanceof HTMLParagraphElement) {
       leadForm.addEventListener("submit", async (event) => {
