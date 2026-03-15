@@ -6,4 +6,7 @@ import vercel from "@astrojs/vercel";
 export default defineConfig({
   output: "static",
   adapter: vercel(),
+  security: {
+    checkOrigin: false,
+  },
 });
