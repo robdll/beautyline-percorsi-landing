@@ -409,16 +409,17 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
           <p class="marked-strong">{pageContent.leadForm.limitedSeatsLine}</p>
           <p class="marked-text">Assicurati il tuo posto con una quota di iscrizione di €299.</p>
 
-          <form class="lead-form" action="#" method="post">
-            <input name="nome" type="text" placeholder="Nome e cognome" />
-            <input name="email" type="email" placeholder="Email" />
-            <input name="telefono" type="tel" placeholder="Telefono" />
-            <textarea name="messaggio" placeholder="Dimmi quale percorso ti interessa"></textarea>
+          <form class="lead-form" action="/api/lead" method="post" data-lead-form>
+            <input name="nome" type="text" placeholder="Nome e cognome" required />
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="telefono" type="tel" placeholder="Telefono" required />
+            <textarea name="messaggio" placeholder="Dimmi quale percorso ti interessa" required></textarea>
             <label class="small-text">
-              <input type="checkbox" name="privacy" />
+              <input type="checkbox" name="privacy" required />
               {pageContent.leadForm.privacyText}
             </label>
             <button type="submit" class="btn btn-primary">{pageContent.leadForm.submitLabel}</button>
+            <p class="form-status-message" data-form-status aria-live="polite"></p>
           </form>
         </article>
       </div>
@@ -435,5 +436,47 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
       </p>
     </div>
   </footer>
+
+  <script>
+    const leadForm = document.querySelector("[data-lead-form]");
+    const statusMessage = document.querySelector("[data-form-status]");
+
+    if (leadForm instanceof HTMLFormElement && statusMessage instanceof HTMLParagraphElement) {
+      leadForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const submitButton = leadForm.querySelector('button[type="submit"]');
+        if (!(submitButton instanceof HTMLButtonElement)) return;
+
+        statusMessage.textContent = "Invio in corso...";
+        statusMessage.dataset.status = "pending";
+        submitButton.disabled = true;
+
+        try {
+          const response = await fetch("/api/lead", {
+            method: "POST",
+            body: new FormData(leadForm),
+          });
+
+          const payload = await response.json().catch(() => ({ message: "" }));
+
+          if (!response.ok) {
+            throw new Error(payload.message || "Errore durante l'invio della richiesta.");
+          }
+
+          leadForm.reset();
+          statusMessage.textContent = "Grazie! Ti contatteremo al piu presto.";
+          statusMessage.dataset.status = "success";
+        } catch (error) {
+          const errorMessage =
+            error instanceof Error ? error.message : "Impossibile inviare il modulo.";
+          statusMessage.textContent = errorMessage;
+          statusMessage.dataset.status = "error";
+        } finally {
+          submitButton.disabled = false;
+        }
+      });
+    }
+  </script>
 
 </BaseLayout>
