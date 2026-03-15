@@ -134,6 +134,95 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
             <p class="percorso-name percorso-name-program" style="margin-bottom: 0;">{track.name}</p>
             <p class="marked-text" style="text-align: center;">{track.description}</p>
             <p class="marked-text" style="text-align: center;">{track.description2}</p>
+            {track.name === "Percorso Master Pro" && (
+              <div style="margin-top: 16px;">
+                <p><strong>Crescita tecnica completa.</strong></p>
+                <p>
+                  Percorso pensato per onicotecniche che desiderano vivere la loro prima esperienza
+                  all&apos;interno di un vero percorso Master.
+                </p>
+                <p>
+                  E&apos; aperto a tutte le professioniste che vogliono migliorare la propria tecnica, confrontarsi con
+                  Master nazionali e internazionali e iniziare a entrare nel mondo della formazione di alto livello.
+                </p>
+                <p>
+                  Durante il percorso le partecipanti lavoreranno passo dopo passo insieme ai Master,
+                  sviluppando precisione, struttura e metodo di lavoro professionale.
+                </p>
+                <h4>Cosa include</h4>
+                <ul>
+                  <li>6 giornate di formazione con Master nazionali e internazionali</li>
+                  <li>Classi a numero chiuso (max 12 partecipanti)</li>
+                  <li>6 attestati di partecipazione</li>
+                  <li>Valutazione tecnica durante il percorso</li>
+                  <li>Kit professionale in omaggio firmato CHRIS NAILS</li>
+                  <li>Gadget e merchandising esclusivo</li>
+                  <li>Confronto diretto con i Master durante le giornate di formazione</li>
+                  <li>Preparazione tecnica per migliorare struttura, precisione e metodo di lavoro</li>
+                  <li>Cerimonia finale con consegna ufficiale degli attestati - Master Award Day</li>
+                </ul>
+                <h4>Certificazione finale</h4>
+                <p>
+                  Al termine del percorso le partecipanti riceveranno una certificazione finale basata sulla
+                  valutazione tecnica ottenuta durante il percorso.
+                </p>
+                <p>In base al livello raggiunto verra assegnato uno dei seguenti attestati:</p>
+                <ul>
+                  <li>Tecnico</li>
+                  <li>Tecnico Expert</li>
+                  <li>Master Gold</li>
+                </ul>
+                <p>
+                  Un riconoscimento professionale che valorizza il percorso svolto e il livello tecnico raggiunto.
+                </p>
+              </div>
+            )}
+            {track.name === "Percorso Master Experience" && (
+              <div style="margin-top: 16px;">
+                <p><strong>Formazione intensiva con Master internazionali e mondiali</strong></p>
+                <p>
+                  Percorso dedicato a onicotecniche che hanno gia partecipato a campus, percorsi formativi, gare
+                  o corsi avanzati e desiderano confrontarsi con Master internazionali e mondiali di altissimo
+                  livello.
+                </p>
+                <p>
+                  E&apos; pensato per professioniste che vogliono vivere una vera esperienza Master, lavorando
+                  direttamente con grandi nomi del settore e portando la propria tecnica ad uno standard
+                  superiore.
+                </p>
+                <p>
+                  Durante ogni giornata le partecipanti lavoreranno fianco a fianco con il Master ospite,
+                  sviluppando tecniche avanzate, precisione e nuove visioni professionali.
+                </p>
+                <h4>Cosa include</h4>
+                <ul>
+                  <li>6 giornate di formazione con Master internazionali e mondiali</li>
+                  <li>Classi a numero chiuso (max 12 partecipanti)</li>
+                  <li>6 attestati di partecipazione</li>
+                  <li>Valutazione tecnica durante il percorso</li>
+                  <li>Kit professionale in omaggio firmato CHRIS NAILS</li>
+                  <li>Gadget e merchandising esclusivo</li>
+                  <li>Full immersion tecnica con i Master</li>
+                  <li>Confronto diretto con professionisti di fama mondiale</li>
+                  <li>Esperienza formativa ad alta intensita tecnica</li>
+                  <li>Cerimonia finale con consegna ufficiale degli attestati e Master Award Day</li>
+                </ul>
+                <h4>Certificazione finale</h4>
+                <p>
+                  Al termine del percorso le partecipanti riceveranno una certificazione finale basata sulla
+                  valutazione tecnica ottenuta durante il percorso.
+                </p>
+                <p>In base al livello raggiunto verra assegnato uno dei seguenti attestati:</p>
+                <ul>
+                  <li>Master Experience Gold</li>
+                  <li>Master Experience Platinum</li>
+                </ul>
+                <p>
+                  Una certificazione di alto valore che riconosce il livello tecnico raggiunto e l&apos;esperienza
+                  formativa vissuta.
+                </p>
+              </div>
+            )}
             <div class="grid three-col" style="margin-top: 10px;">
               {track.sessions.map((session) => (
                 <article class={`card schedule-card ${session.isCeremony ? "ceremony-card" : ""}`}>
@@ -214,22 +303,58 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
               <li>{item}</li>
             ))}
           </ul>
-          <h3>{pageContent.requirementsEvaluationTitle}</h3>
+          <h3 style="margin-top: 12px;">{pageContent.requirementsEvaluationTitle}</h3>
           <p>{pageContent.requirementsEvaluation}</p>
           <h3>{pageContent.preMasterTitle}</h3>
           <p>{pageContent.preMaster}</p>
         </article>
         <article class="card content-card">
-          <h2 class="section-title">{pageContent.materialsTitle}</h2>
-          <p>{pageContent.materialsIntro}</p>
-          <h3>{pageContent.materialsCarryTitle}</h3>
-          <p class="section-subtitle">{pageContent.materialsCarryText}</p>
+          <h2 class="section-title">Kit professionale incluso</h2>
+          <p>
+            Durante il percorso verranno utilizzati prodotti professionali della linea Chris Nails, insieme ad
+            altri marchi selezionati messi a disposizione dai Master per lo svolgimento delle diverse
+            tecniche.
+          </p>
+          <p>
+            Ogni partecipante ricevera prodotti gratuiti da utilizzare durante le giornate formative, cosi da
+            poter lavorare direttamente con materiali professionali durante le lezioni.
+          </p>
+          <p>
+            Il percorso ti permettera comunque di lavorare anche con i prodotti che utilizzi abitualmente,
+            cosi da applicare le tecniche apprese con i materiali che preferisci.
+          </p>
+          <p>
+            Prima dell&apos;inizio del percorso verra inoltre inviata una lista dei materiali da portare, dove
+            saranno indicati:
+          </p>
           <ul style="margin-top: 12px;">
-            {pageContent.materials.map((item) => (
-              <li>{item}</li>
-            ))}
+            <li>materiali necessari</li>
+            <li>materiali opzionali</li>
           </ul>
-          <p style="margin-top: 14px;">Tutti gli altri prodotti verranno forniti durante i corsi.</p>
+          <p>
+            in modo da permettere a ogni partecipante di organizzarsi al meglio.
+          </p>
+          <p>
+            Durante il percorso verra inoltre creato un gruppo WhatsApp dedicato, dove verranno condivise
+            tutte le comunicazioni organizzative, eventuali materiali di supporto e dispense didattiche
+            quando previste.
+          </p>
+          <h3>Cosa portare ai corsi</h3>
+          <p class="section-subtitle">
+            Per partecipare sara necessario portare solo la propria attrezzatura personale. Tutti gli altri
+            prodotti verranno forniti durante i corsi.
+          </p>
+          <ul style="margin-top: 12px;">
+            <li>Lampada UV / LED</li>
+            <li>Fresa</li>
+            <li>Punte per fresa</li>
+            <li>Pennelli da lavoro</li>
+            <li>Attrezzatura personale (forbicine, spingicuticole, ecc.)</li>
+          </ul>
+          <p style="margin-top: 14px;">
+            Tutti gli altri prodotti necessari allo svolgimento delle lezioni verranno messi a disposizione
+            durante il percorso.
+          </p>
         </article>
       </div>
     </section>

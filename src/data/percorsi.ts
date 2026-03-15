@@ -194,7 +194,7 @@ export const pageContent = {
     {
       question: "Ancora indecisa?",
       answer:
-        "Se stai pensando di partecipare, probabilmente senti già il desiderio di fare un passo avanti nella tua crescita professionale. Iscriviti e vivi l’esperienza dei Percorsi Master Beauty Line Academy.",
+        "Se stai pensando di partecipare, probabilmente senti gia il desiderio di fare un passo avanti nella tua crescita professionale. I Percorsi Master Beauty Line Academy sono pensati per offrirti un&apos;esperienza formativa unica, dove potrai migliorare la tua tecnica, confrontarti con grandi professionisti del settore e vivere un percorso di crescita reale. Se hai bisogno di ulteriori informazioni, chiarimenti o vuoi semplicemente capire quale percorso e piu adatto a te, il nostro team e a tua completa disposizione. Saremo felici di rispondere a ogni tua domanda e aiutarti a scegliere il percorso migliore per la tua crescita professionale. Iscriviti e vivi l&apos;esperienza dei Percorsi Master Beauty Line Academy.",
     },
   ],
   leadForm: {
