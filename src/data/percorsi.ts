@@ -268,7 +268,7 @@ export const programTracks: ProgramTrack[] = [
       },
       {
         date: "14 Febbraio",
-        master: "Facio Billoni",
+        master: "Fabio Billoni",
         image: "/images/master_03.webp",
         lessonPlaceholder: "NOME CORSO DA DEFINIRE",
         imagePosition: "50% 2%",
