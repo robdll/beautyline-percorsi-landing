@@ -48,7 +48,7 @@ export const pageContent = {
     strongLine:
       "MASTER NAZIONALI, INTERNAZIONALI E MONDIALI • TECNICHE AVANZATE • CERTIFICAZIONE FINALE • SOLO 12 POSTI DISPONIBILI",
     ctaPrimary: "Prenota ora",
-    ctaSecondary: "Scopri il programma",
+    ctaSecondary: "Scopri i Percorsi",
     imageAlt: "Placeholder hero Percorsi Master",
     imagePlaceholder: "Sostituire con foto hero ufficiale",
   },

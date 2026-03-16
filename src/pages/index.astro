@@ -42,7 +42,7 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
           <p class="marked-strong">{pageContent.hero.limitedSeats}</p>
           <div class="btn-row">
             <a class="btn btn-primary" href={`#${sectionAnchors.contatti}`}>{pageContent.hero.ctaPrimary}</a>
-            <a class="btn btn-secondary" href={`#${sectionAnchors.programma}`}>{pageContent.hero.ctaSecondary}</a>
+            <a class="btn btn-secondary" href={`#${sectionAnchors.percorsi}`}>{pageContent.hero.ctaSecondary}</a>
           </div>
         </div>
         <div class="placeholder-media" role="img" aria-label={pageContent.hero.imageAlt}>
@@ -90,19 +90,6 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
 
     <section class="section" id={sectionAnchors.programma}>
       <div class="container">
-        <article class="card content-card program-intro-card">
-          <h2 class="section-title">Scopri il Programma</h2>
-          <p class="marked-text">Assicurati il tuo posto con una quota di iscrizione di €299.</p>
-          <p>
-            Una programmazione esclusiva distribuita su piu giornate formative, con Master nazionali e
-            internazionali, Mondiali dedicati a tecniche avanzate.
-          </p>
-          <p>
-            Ogni giornata sara guidata da un Master diverso, che presentera una tecnica specifica attraverso
-            dimostrazione, pratica guidata e confronto diretto con le partecipanti.
-          </p>
-          <p>Un format formativo intenso ispirato ai grandi eventi internazionali del settore nails.</p>
-        </article>
         {programTracks.map((track) => (
           <div style="margin-top: 26px;">
             <article class="card content-card">
