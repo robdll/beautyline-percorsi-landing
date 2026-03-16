@@ -217,7 +217,7 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
                         data-course-name={session.lessonPlaceholder}
                         data-master-name={session.master}
                         data-course-date={session.date}
-                        data-start-time="09:00"
+                        data-start-time="9.00"
                         data-end-time="18:00"
                         data-main-image={session.image}
                       >
@@ -549,14 +549,27 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
         const courseName = button.dataset.courseName || "Corso da definire";
         const masterName = button.dataset.masterName || "Master da definire";
         const courseDate = button.dataset.courseDate || "data da definire";
-        const startTime = button.dataset.startTime || "09:00";
+        const startTime = button.dataset.startTime || "9.00";
         const endTime = button.dataset.endTime || "18:00";
         const trackName = button.dataset.trackName || "";
         const mainImage = button.dataset.mainImage || "/images/logo-circle.png";
-        const isSeulCourse = courseName.trim().toLowerCase() === "seul";
+        const normalizedCourseName = courseName.trim().toLowerCase();
+        const normalizedMasterName = masterName.trim().toLowerCase();
+        const usesMolinarCarousel =
+          normalizedCourseName === "moma square" || normalizedMasterName.includes("molinar");
 
-        carouselImages = isSeulCourse
-          ? [mainImage, "/images/seul-1.jpeg", "/images/logo-circle.png"]
+        carouselImages = usesMolinarCarousel
+          ? [
+              mainImage,
+              "/images/molinar-1.webp",
+              "/images/molinar-2.webp",
+              "/images/molinar-3.webp",
+              "/images/molinar-4.webp",
+              "/images/molinar-5.webp",
+              "/images/molinar-6.webp",
+              "/images/molinar-7.webp",
+              "/images/molinar-8.webp",
+            ]
           : [mainImage, "/images/logo-circle.png", "/images/logo-bl.png"];
         currentSlide = 0;
         renderSlide();

@@ -775,3 +775,11 @@ footer {
     padding: 4px 0;
   }
 }
+
+@media (min-width: 450px) and (max-width: 900px) {
+  .three-col > .schedule-card:not(.ceremony-card) {
+    width: 100%;
+    max-width: 370px;
+    margin-inline: auto;
+  }
+}

@@ -256,7 +256,7 @@ export const programTracks: ProgramTrack[] = [
     sessions: [
       {
         date: "24 Gennaio",
-        master: "master da definire",
+        master: "Da Definire",
         image: "/images/master_01.webp",
         lessonPlaceholder: "NOME CORSO DA DEFINIRE"
       },
@@ -307,38 +307,38 @@ export const programTracks: ProgramTrack[] = [
     sessions: [
       {
         date: "20 Febbraio",
-        master: "giulia sago",
+        master: "Giulia Sago",
         image: "/images/master_07.webp",
         lessonPlaceholder: "Realistic",
       },
       {
         date: "21 Febbraio",
-        master: "Master Mariann Molinar",
+        master: "Mariann Molinar",
         image: "/images/master_08.webp",
         lessonPlaceholder: "Moma Square",
       },
       {
         date: "22 Febbraio",
-        master: "Master Tanya Povescaia",
+        master: "Tanya Povescaia",
         image: "/images/master_09.webp",
         lessonPlaceholder: "NOME CORSO DA DEFINIRE",
         imagePosition: "50% 15%",
       },
       {
         date: "20 MARZO",
-        master: "MASTER DA DEFINIRE",
+        master: "Da Definire",
         image: "/images/master_10.webp",
         lessonPlaceholder: "MASTER DA DEFINIRE",
       },
       {
         date: "21 MARZO",
-        master: "MASTER DA DEFINIRE",
+        master: "Da Definire",
         image: "/images/master_11.webp",
         lessonPlaceholder: "MASTER DA DEFINIRE",
       },
       {
         date: "22 MARZO",
-        master: "Master MIMO VO",
+        master: "Mimo Vo",
         image: "/images/master_12.webp",
         lessonPlaceholder: "Seul",
         imagePosition: "50% 0%",
