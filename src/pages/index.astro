@@ -78,16 +78,25 @@ const trackAnchors: Record<string, string> = {
               href={`#${trackAnchors[percorso.name] ?? sectionAnchors.programma}`}
               aria-label={`Vai a ${percorso.name}`}
             >
-              <article class="card content-card">
+              <article class="card content-card percorso-summary-card">
                 <p class="percorso-name">{percorso.shortName}</p>
-                <h4>Date percorso</h4>
+                <div class="date-master-line date-master-head" role="presentation">
+                  <span>Data</span>
+                  <span>Master</span>
+                  <span>Corso</span>
+                </div>
                 <ul class="date-master-list">
                   {programTracks
                     .find((track) => track.name === percorso.name)
                     ?.sessions.map((session) => (
                       <li class="date-master-line">
                         <span class="date-master-date">{session.date}</span>
-                        <span class="date-master-name">{session.master}</span>
+                        <span class={`date-master-name ${session.isCeremony ? "date-master-name-ceremony" : ""}`}>
+                          {session.master}
+                        </span>
+                        {!session.isCeremony && (
+                          <span class="date-master-course">{session.lessonPlaceholder}</span>
+                        )}
                       </li>
                     ))}
                 </ul>

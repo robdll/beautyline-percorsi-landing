@@ -258,38 +258,38 @@ export const programTracks: ProgramTrack[] = [
         date: "24 Gennaio",
         master: "Marco Sorrentino",
         image: "/images/master_01.webp",
-        lessonPlaceholder: "STILETTO CREATIVE"
+        lessonPlaceholder: "Stiletto Creative"
       },
       {
         date: "25 Gennaio",
         master: "Valentina Petrocco",
         image: "/images/master_02.webp",
-        lessonPlaceholder: "NOME CORSO DA DEFINIRE",
+        lessonPlaceholder: "Mandorla Russa",
       },
       {
         date: "14 Febbraio",
         master: "Fabio Billoni",
         image: "/images/master_03.webp",
-        lessonPlaceholder: "NOME CORSO DA DEFINIRE",
+        lessonPlaceholder: "Dual Form",
         imagePosition: "50% 2%",
       },
       {
         date: "15 Febbraio",
         master: "Sergey Lavrukhin",
         image: "/images/master_04.webp",
-        lessonPlaceholder: "NOME CORSO DA DEFINIRE",
+        lessonPlaceholder: "Butterfly",
       },
       {
         date: "14 Marzo",
         master: "Ildiko Marczinek",
         image: "/images/master_05.webp",
-        lessonPlaceholder: "NOME CORSO DA DEFINIRE",
+        lessonPlaceholder: "Edge",
       },
       {
         date: "15 Marzo",
         master: "Irina Primo",
         image: "/images/master_06.webp",
-        lessonPlaceholder: "NOME CORSO DA DEFINIRE",
+        lessonPlaceholder: "Dragon",
       },
       {
         date: "11 Aprile",
@@ -321,20 +321,20 @@ export const programTracks: ProgramTrack[] = [
         date: "22 Febbraio",
         master: "Tanya Povenskaya",
         image: "/images/master_09.webp",
-        lessonPlaceholder: "NOME CORSO DA DEFINIRE",
+        lessonPlaceholder: "Extreme",
         imagePosition: "50% 15%",
       },
       {
         date: "20 Marzo",
         master: "Da Definire",
         image: "/images/master_10.webp",
-        lessonPlaceholder: "MASTER DA DEFINIRE",
+        lessonPlaceholder: "Da definire",
       },
       {
         date: "21 Marzo",
         master: "Da Definire",
         image: "/images/master_11.webp",
-        lessonPlaceholder: "MASTER DA DEFINIRE",
+        lessonPlaceholder: "Da definire",
       },
       {
         date: "22 Marzo",
