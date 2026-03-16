@@ -137,7 +137,7 @@ export const pageContent = {
   closingStrong: "Solo 12 posti disponibili per ogni percorso master.",
   faqs: [
     {
-      question: "PERCHÉ PARTECIPARE",
+      question: "Perché partecipare",
       answer:
         "I Percorsi Master Beauty Line Academy non sono semplici corsi, ma un’esperienza formativa unica che ti permetterà di confrontarti con alcuni dei migliori Master nazionali e internazionali e monidiali del settore nails. Durante il percorso potrai migliorare la tua tecnica, acquisire nuove competenze avanzate e ottenere una certificazione finale di grande valore professionale e fare una bella esperinza",
     },
