@@ -608,6 +608,33 @@ header.site-header {
   color: #b91c1c;
 }
 
+.sponsors-section .section-title {
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.sponsor-card {
+  background: #fff;
+  min-height: 90px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+
+.sponsor-logo {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100px;
+  object-fit: contain;
+}
+
 .master-modal {
   position: fixed;
   inset: 0;
@@ -730,7 +757,8 @@ footer {
 @media (max-width: 900px) {
   .hero-inner,
   .two-col,
-  .three-col {
+  .three-col,
+  .sponsors-grid {
     grid-template-columns: 1fr;
   }
 

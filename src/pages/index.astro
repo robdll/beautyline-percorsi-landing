@@ -372,6 +372,24 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
         </article>
       </div>
     </section>
+
+    <section class="section sponsors-section">
+      <div class="container">
+        <h2 class="section-title">I Nostri Sponsor</h2>
+        <div class="sponsors-grid">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <article class="card sponsor-card">
+              <img
+                src="/images/sponsor-1.webp"
+                alt={`Logo sponsor placeholder ${index + 1}`}
+                class="sponsor-logo"
+                loading="lazy"
+              />
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   </main>
 
   <div class="master-modal" data-master-modal hidden>
