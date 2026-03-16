@@ -49,6 +49,11 @@ img {
   scroll-margin-top: 86px;
 }
 
+[id="percorso-master-pro"],
+[id="percorso-master-experience"] {
+  scroll-margin-top: 86px;
+}
+
 .section-title {
   font-size: clamp(1.65rem, 2.5vw, 2.5rem);
   margin: 0 0 14px;

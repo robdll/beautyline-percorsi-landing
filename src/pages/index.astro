@@ -101,8 +101,8 @@ const trackAnchors: Record<string, string> = {
     <section class="section" id={sectionAnchors.programma}>
       <div class="container">
         {programTracks.map((track) => (
-          <div id={trackAnchors[track.name]} style="margin-top: 26px;">
-            <article class="card content-card">
+          <div style="margin-top: 26px;">
+            <article id={trackAnchors[track.name]} class="card content-card">
               <p class="percorso-name percorso-name-program" style="margin-bottom: 0;">{track.name}</p>
               <p class="marked-text" style="text-align: center;">{track.description}</p>
               <p class="marked-text" style="text-align: center;">{track.description2}</p>
