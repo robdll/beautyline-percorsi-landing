@@ -275,13 +275,13 @@ export const programTracks: ProgramTrack[] = [
       },
       {
         date: "15 Febbraio",
-        master: "Serjey",
+        master: "Sergey Lavrukhin",
         image: "/images/master_04.webp",
         lessonPlaceholder: "NOME CORSO DA DEFINIRE",
       },
       {
         date: "14 Marzo",
-        master: "Ildiko",
+        master: "Ildiko Marczinek",
         image: "/images/master_05.webp",
         lessonPlaceholder: "NOME CORSO DA DEFINIRE",
       },
@@ -313,13 +313,13 @@ export const programTracks: ProgramTrack[] = [
       },
       {
         date: "21 Febbraio",
-        master: "Mariann Molinar",
+        master: "Mariann Molnar",
         image: "/images/master_08.webp",
         lessonPlaceholder: "Moma Square",
       },
       {
         date: "22 Febbraio",
-        master: "Tanya Povescaia",
+        master: "Tanya Povenskaya",
         image: "/images/master_09.webp",
         lessonPlaceholder: "NOME CORSO DA DEFINIRE",
         imagePosition: "50% 15%",

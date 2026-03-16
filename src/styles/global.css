@@ -46,6 +46,7 @@ img {
 
 .section {
   padding: 72px 0;
+  scroll-margin-top: 86px;
 }
 
 .section-title {
@@ -141,6 +142,22 @@ img {
 
 .percorso-cards-grid {
   gap: 36px;
+}
+
+.percorso-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.percorso-card-link .card {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.percorso-card-link:hover .card,
+.percorso-card-link:focus-visible .card {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(42, 29, 21, 0.12);
 }
 
 .placeholder-media {

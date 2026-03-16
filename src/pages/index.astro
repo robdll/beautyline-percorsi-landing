@@ -1,6 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/percorsi";
+
+const trackAnchors: Record<string, string> = {
+  "Percorso Master Pro": "percorso-master-pro",
+  "Percorso Master Experience": "percorso-master-experience",
+};
 ---
 
 <BaseLayout title="Percorsi Master | Beauty Line Academy" description={pageContent.hero.description}>
@@ -23,7 +28,6 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
       </button>
       <nav class="header-nav" id="site-header-nav" data-header-nav data-open="false">
         <a href={`#${sectionAnchors.percorsi}`}>Percorsi</a>
-        <a href={`#${sectionAnchors.programma}`}>Programma</a>
         <a href={`#${sectionAnchors.requisiti}`}>Requisiti</a>
         <a href={`#${sectionAnchors.faq}`}>FAQ</a>
         <a href={`#${sectionAnchors.contatti}`}>Contatti</a>
@@ -69,20 +73,26 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
         <p class="section-subtitle">{pageContent.comparisonIntro}</p>
         <div class="grid two-col percorso-cards-grid" style="margin-top: 24px;">
           {percorsi.map((percorso) => (
-            <article class="card content-card">
-              <p class="percorso-name">{percorso.shortName}</p>
-              <h4>Date percorso</h4>
-              <ul class="date-master-list">
-                {programTracks
-                  .find((track) => track.name === percorso.name)
-                  ?.sessions.map((session) => (
-                    <li class="date-master-line">
-                      <span class="date-master-date">{session.date}</span>
-                      <span class="date-master-name">{session.master}</span>
-                    </li>
-                  ))}
-              </ul>
-            </article>
+            <a
+              class="percorso-card-link"
+              href={`#${trackAnchors[percorso.name] ?? sectionAnchors.programma}`}
+              aria-label={`Vai a ${percorso.name}`}
+            >
+              <article class="card content-card">
+                <p class="percorso-name">{percorso.shortName}</p>
+                <h4>Date percorso</h4>
+                <ul class="date-master-list">
+                  {programTracks
+                    .find((track) => track.name === percorso.name)
+                    ?.sessions.map((session) => (
+                      <li class="date-master-line">
+                        <span class="date-master-date">{session.date}</span>
+                        <span class="date-master-name">{session.master}</span>
+                      </li>
+                    ))}
+                </ul>
+              </article>
+            </a>
           ))}
         </div>
       </div>
@@ -91,7 +101,7 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
     <section class="section" id={sectionAnchors.programma}>
       <div class="container">
         {programTracks.map((track) => (
-          <div style="margin-top: 26px;">
+          <div id={trackAnchors[track.name]} style="margin-top: 26px;">
             <article class="card content-card">
               <p class="percorso-name percorso-name-program" style="margin-bottom: 0;">{track.name}</p>
               <p class="marked-text" style="text-align: center;">{track.description}</p>
