@@ -95,6 +95,7 @@ img {
   padding: 12px 20px;
   font-weight: 600;
   border: 1px solid transparent;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
 }
 
 .btn-primary {
@@ -109,6 +110,13 @@ img {
 .btn-secondary {
   background: transparent;
   border-color: var(--border);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  background: #fff4eb;
+  border-color: #d9bda5;
+  color: #4f2e1a;
 }
 
 .card {
