@@ -90,12 +90,19 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
 
     <section class="section" id={sectionAnchors.programma}>
       <div class="container">
-        <h2 class="section-title">{pageContent.programSectionTitle}</h2>
-        <p class="marked-text">{pageContent.hero.depositLine}</p>
-        <p class="section-subtitle">{pageContent.programIntro}</p>
-        {pageContent.programDetails.map((line) => (
-          <p>{line}</p>
-        ))}
+        <article class="card content-card">
+          <h2 class="section-title">Scopri il Programma</h2>
+          <p class="marked-text">Assicurati il tuo posto con una quota di iscrizione di €299.</p>
+          <p>
+            Una programmazione esclusiva distribuita su piu giornate formative, con Master nazionali e
+            internazionali, Mondiali dedicati a tecniche avanzate.
+          </p>
+          <p>
+            Ogni giornata sara guidata da un Master diverso, che presentera una tecnica specifica attraverso
+            dimostrazione, pratica guidata e confronto diretto con le partecipanti.
+          </p>
+          <p>Un format formativo intenso ispirato ai grandi eventi internazionali del settore nails.</p>
+        </article>
         {programTracks.map((track) => (
           <div style="margin-top: 26px;">
             <p class="percorso-name percorso-name-program" style="margin-bottom: 0;">{track.name}</p>
