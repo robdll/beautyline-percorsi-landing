@@ -142,9 +142,9 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
                 </p>
                 <p>In base al livello raggiunto verra assegnato uno dei seguenti attestati:</p>
                 <ul>
-                  <li>Tecnico</li>
-                  <li>Tecnico Expert</li>
-                  <li>Master Gold</li>
+                  <li>Tecnico (Bronze)</li>
+                  <li>Tecnico Expert (Silver)</li>
+                  <li>Master (Gold)</li>
                 </ul>
                 <p>
                   Un riconoscimento professionale che valorizza il percorso svolto e il livello tecnico raggiunto.
@@ -225,7 +225,6 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
                         data-course-date={session.date}
                         data-start-time="9.00"
                         data-end-time="18:00"
-                        data-main-image={session.image}
                       >
                         Scopri
                       </button>
@@ -238,49 +237,6 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
         ))}
       </div>
     </section>
-
-    {percorsi.map((percorso) => (
-      <section class="section">
-        <div class="container">
-          <p class="marked-text" style="text-align: center; margin-bottom: 20px;">Solo 12 posti disponibili per ogni percorso master</p>
-          <div class="grid two-col">
-            <article class="card content-card">
-              <p class="percorso-name">{percorso.name}</p>
-              <h2 class="section-title" style="font-size: clamp(1.4rem, 2.1vw, 2rem);">{percorso.subtitle}</h2>
-              <p>{percorso.description}</p>
-              <h4>Cosa include</h4>
-              <ul>
-                {percorso.highlights.map((highlight) => (
-                  <li>{highlight}</li>
-                ))}
-              </ul>
-            </article>
-            <article class="card content-card">
-              <h3>Certificazione finale</h3>
-              <p class="section-subtitle">Durante il percorso ogni partecipante verrà valutata dai Master.</p>
-              <p class="section-subtitle">Il punteggio finale determinerà il livello della certificazione ottenuta.</p>
-              <ul style="margin-top: 12px;">
-                {percorso.certifications.map((certification) => (
-                  <li>
-                    <span
-                      class={`certification-level certification-${certification.level
-                        .toLowerCase()
-                        .replace(/\s+/g, "-")}`}
-                    >
-                      {certification.level}
-                    </span>
-                    {certification.label ? ` - ${certification.label}` : ""}
-                  </li>
-                ))}
-              </ul>
-              <div class="placeholder-media" style="margin-top: 18px; min-height: 160px;">
-                Placeholder foto master / lavori corso
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-    ))}
 
     <section class="section" id={sectionAnchors.requisiti}>
       <div class="container grid two-col">
@@ -558,15 +514,14 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
         const startTime = button.dataset.startTime || "9.00";
         const endTime = button.dataset.endTime || "18:00";
         const trackName = button.dataset.trackName || "";
-        const mainImage = button.dataset.mainImage || "/images/logo-circle.png";
         const normalizedCourseName = courseName.trim().toLowerCase();
         const normalizedMasterName = masterName.trim().toLowerCase();
         const usesMolinarCarousel =
           normalizedCourseName === "moma square" || normalizedMasterName.includes("molinar");
+        const usesMinoVoCarousel = normalizedMasterName.includes("mino vo");
 
         carouselImages = usesMolinarCarousel
           ? [
-              mainImage,
               "/images/molinar-1.webp",
               "/images/molinar-2.webp",
               "/images/molinar-3.webp",
@@ -576,7 +531,9 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
               "/images/molinar-7.webp",
               "/images/molinar-8.webp",
             ]
-          : [mainImage, "/images/logo-circle.png", "/images/logo-bl.png"];
+          : usesMinoVoCarousel
+            ? ["/images/seul-1.webp"]
+            : ["/images/logo-circle.png", "/images/logo-bl.png"];
         currentSlide = 0;
         renderSlide();
 

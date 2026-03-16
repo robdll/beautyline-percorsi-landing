@@ -338,7 +338,7 @@ export const programTracks: ProgramTrack[] = [
       },
       {
         date: "22 Marzo",
-        master: "Mimo Vo",
+        master: "Mino Vo",
         image: "/images/master_12.webp",
         lessonPlaceholder: "Seul",
         imagePosition: "50% 0%",
