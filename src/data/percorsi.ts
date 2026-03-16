@@ -256,9 +256,9 @@ export const programTracks: ProgramTrack[] = [
     sessions: [
       {
         date: "24 Gennaio",
-        master: "Da Definire",
+        master: "Marco Sorrentino",
         image: "/images/master_01.webp",
-        lessonPlaceholder: "NOME CORSO DA DEFINIRE"
+        lessonPlaceholder: "STILETTO CREATIVE"
       },
       {
         date: "25 Gennaio",
