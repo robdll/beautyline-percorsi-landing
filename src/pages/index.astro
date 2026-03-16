@@ -105,98 +105,100 @@ import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/pe
         </article>
         {programTracks.map((track) => (
           <div style="margin-top: 26px;">
-            <p class="percorso-name percorso-name-program" style="margin-bottom: 0;">{track.name}</p>
-            <p class="marked-text" style="text-align: center;">{track.description}</p>
-            <p class="marked-text" style="text-align: center;">{track.description2}</p>
-            {track.name === "Percorso Master Pro" && (
-              <div style="margin-top: 16px;">
-                <p><strong>Crescita tecnica completa.</strong></p>
-                <p>
-                  Percorso pensato per onicotecniche che desiderano vivere la loro prima esperienza
-                  all&apos;interno di un vero percorso Master.
-                </p>
-                <p>
-                  E&apos; aperto a tutte le professioniste che vogliono migliorare la propria tecnica, confrontarsi con
-                  Master nazionali e internazionali e iniziare a entrare nel mondo della formazione di alto livello.
-                </p>
-                <p>
-                  Durante il percorso le partecipanti lavoreranno passo dopo passo insieme ai Master,
-                  sviluppando precisione, struttura e metodo di lavoro professionale.
-                </p>
-                <h4>Cosa include</h4>
-                <ul>
-                  <li>6 giornate di formazione con Master nazionali e internazionali</li>
-                  <li>Classi a numero chiuso (max 12 partecipanti)</li>
-                  <li>6 attestati di partecipazione</li>
-                  <li>Valutazione tecnica durante il percorso</li>
-                  <li>Kit professionale in omaggio firmato CHRIS NAILS</li>
-                  <li>Gadget e merchandising esclusivo</li>
-                  <li>Confronto diretto con i Master durante le giornate di formazione</li>
-                  <li>Preparazione tecnica per migliorare struttura, precisione e metodo di lavoro</li>
-                  <li>Cerimonia finale con consegna ufficiale degli attestati - Master Award Day</li>
-                </ul>
-                <h4>Certificazione finale</h4>
-                <p>
-                  Al termine del percorso le partecipanti riceveranno una certificazione finale basata sulla
-                  valutazione tecnica ottenuta durante il percorso.
-                </p>
-                <p>In base al livello raggiunto verra assegnato uno dei seguenti attestati:</p>
-                <ul>
-                  <li>Tecnico (Bronze)</li>
-                  <li>Tecnico Expert (Silver)</li>
-                  <li>Master (Gold)</li>
-                </ul>
-                <p>
-                  Un riconoscimento professionale che valorizza il percorso svolto e il livello tecnico raggiunto.
-                </p>
-              </div>
-            )}
-            {track.name === "Percorso Master Experience" && (
-              <div style="margin-top: 16px;">
-                <p><strong>Formazione intensiva con Master internazionali e mondiali</strong></p>
-                <p>
-                  Percorso dedicato a onicotecniche che hanno gia partecipato a campus, percorsi formativi, gare
-                  o corsi avanzati e desiderano confrontarsi con Master internazionali e mondiali di altissimo
-                  livello.
-                </p>
-                <p>
-                  E&apos; pensato per professioniste che vogliono vivere una vera esperienza Master, lavorando
-                  direttamente con grandi nomi del settore e portando la propria tecnica ad uno standard
-                  superiore.
-                </p>
-                <p>
-                  Durante ogni giornata le partecipanti lavoreranno fianco a fianco con il Master ospite,
-                  sviluppando tecniche avanzate, precisione e nuove visioni professionali.
-                </p>
-                <h4>Cosa include</h4>
-                <ul>
-                  <li>6 giornate di formazione con Master internazionali e mondiali</li>
-                  <li>Classi a numero chiuso (max 12 partecipanti)</li>
-                  <li>6 attestati di partecipazione</li>
-                  <li>Valutazione tecnica durante il percorso</li>
-                  <li>Kit professionale in omaggio firmato CHRIS NAILS</li>
-                  <li>Gadget e merchandising esclusivo</li>
-                  <li>Full immersion tecnica con i Master</li>
-                  <li>Confronto diretto con professionisti di fama mondiale</li>
-                  <li>Esperienza formativa ad alta intensita tecnica</li>
-                  <li>Cerimonia finale con consegna ufficiale degli attestati e Master Award Day</li>
-                </ul>
-                <h4>Certificazione finale</h4>
-                <p>
-                  Al termine del percorso le partecipanti riceveranno una certificazione finale basata sulla
-                  valutazione tecnica ottenuta durante il percorso.
-                </p>
-                <p>In base al livello raggiunto verra assegnato uno dei seguenti attestati:</p>
-                <ul>
-                  <li>Master Experience Gold</li>
-                  <li>Master Experience Platinum</li>
-                </ul>
-                <p>
-                  Una certificazione di alto valore che riconosce il livello tecnico raggiunto e l&apos;esperienza
-                  formativa vissuta.
-                </p>
-              </div>
-            )}
+            <article class="card content-card">
+              <p class="percorso-name percorso-name-program" style="margin-bottom: 0;">{track.name}</p>
+              <p class="marked-text" style="text-align: center;">{track.description}</p>
+              <p class="marked-text" style="text-align: center;">{track.description2}</p>
+              {track.name === "Percorso Master Pro" && (
+                <div style="margin-top: 16px;">
+                  <p><strong>Crescita tecnica completa.</strong></p>
+                  <p>
+                    Percorso pensato per onicotecniche che desiderano vivere la loro prima esperienza
+                    all&apos;interno di un vero percorso Master.
+                  </p>
+                  <p>
+                    E&apos; aperto a tutte le professioniste che vogliono migliorare la propria tecnica, confrontarsi con
+                    Master nazionali e internazionali e iniziare a entrare nel mondo della formazione di alto livello.
+                  </p>
+                  <p>
+                    Durante il percorso le partecipanti lavoreranno passo dopo passo insieme ai Master,
+                    sviluppando precisione, struttura e metodo di lavoro professionale.
+                  </p>
+                  <h4>Cosa include</h4>
+                  <ul>
+                    <li>6 giornate di formazione con Master nazionali e internazionali</li>
+                    <li>Classi a numero chiuso (max 12 partecipanti)</li>
+                    <li>6 attestati di partecipazione</li>
+                    <li>Valutazione tecnica durante il percorso</li>
+                    <li>Kit professionale in omaggio firmato CHRIS NAILS</li>
+                    <li>Gadget e merchandising esclusivo</li>
+                    <li>Confronto diretto con i Master durante le giornate di formazione</li>
+                    <li>Preparazione tecnica per migliorare struttura, precisione e metodo di lavoro</li>
+                    <li>Cerimonia finale con consegna ufficiale degli attestati - Master Award Day</li>
+                  </ul>
+                  <h4>Certificazione finale</h4>
+                  <p>
+                    Al termine del percorso le partecipanti riceveranno una certificazione finale basata sulla
+                    valutazione tecnica ottenuta durante il percorso.
+                  </p>
+                  <p>In base al livello raggiunto verra assegnato uno dei seguenti attestati:</p>
+                  <ul>
+                    <li>Tecnico (Bronze)</li>
+                    <li>Tecnico Expert (Silver)</li>
+                    <li>Master (Gold)</li>
+                  </ul>
+                  <p>
+                    Un riconoscimento professionale che valorizza il percorso svolto e il livello tecnico raggiunto.
+                  </p>
+                </div>
+              )}
+              {track.name === "Percorso Master Experience" && (
+                <div style="margin-top: 16px;">
+                  <p><strong>Formazione intensiva con Master internazionali e mondiali</strong></p>
+                  <p>
+                    Percorso dedicato a onicotecniche che hanno gia partecipato a campus, percorsi formativi, gare
+                    o corsi avanzati e desiderano confrontarsi con Master internazionali e mondiali di altissimo
+                    livello.
+                  </p>
+                  <p>
+                    E&apos; pensato per professioniste che vogliono vivere una vera esperienza Master, lavorando
+                    direttamente con grandi nomi del settore e portando la propria tecnica ad uno standard
+                    superiore.
+                  </p>
+                  <p>
+                    Durante ogni giornata le partecipanti lavoreranno fianco a fianco con il Master ospite,
+                    sviluppando tecniche avanzate, precisione e nuove visioni professionali.
+                  </p>
+                  <h4>Cosa include</h4>
+                  <ul>
+                    <li>6 giornate di formazione con Master internazionali e mondiali</li>
+                    <li>Classi a numero chiuso (max 12 partecipanti)</li>
+                    <li>6 attestati di partecipazione</li>
+                    <li>Valutazione tecnica durante il percorso</li>
+                    <li>Kit professionale in omaggio firmato CHRIS NAILS</li>
+                    <li>Gadget e merchandising esclusivo</li>
+                    <li>Full immersion tecnica con i Master</li>
+                    <li>Confronto diretto con professionisti di fama mondiale</li>
+                    <li>Esperienza formativa ad alta intensita tecnica</li>
+                    <li>Cerimonia finale con consegna ufficiale degli attestati e Master Award Day</li>
+                  </ul>
+                  <h4>Certificazione finale</h4>
+                  <p>
+                    Al termine del percorso le partecipanti riceveranno una certificazione finale basata sulla
+                    valutazione tecnica ottenuta durante il percorso.
+                  </p>
+                  <p>In base al livello raggiunto verra assegnato uno dei seguenti attestati:</p>
+                  <ul>
+                    <li>Master Experience (Gold)</li>
+                    <li>Master Experience Expert (Platinum)</li>
+                  </ul>
+                  <p>
+                    Una certificazione di alto valore che riconosce il livello tecnico raggiunto e l&apos;esperienza
+                    formativa vissuta.
+                  </p>
+                </div>
+              )}
+            </article>
             <div class="grid three-col" style="margin-top: 10px;">
               {track.sessions.map((session) => (
                 <article class={`card schedule-card ${session.isCeremony ? "ceremony-card" : ""}`}>
