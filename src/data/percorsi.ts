@@ -325,19 +325,19 @@ export const programTracks: ProgramTrack[] = [
         imagePosition: "50% 15%",
       },
       {
-        date: "20 MARZO",
+        date: "20 Marzo",
         master: "Da Definire",
         image: "/images/master_10.webp",
         lessonPlaceholder: "MASTER DA DEFINIRE",
       },
       {
-        date: "21 MARZO",
+        date: "21 Marzo",
         master: "Da Definire",
         image: "/images/master_11.webp",
         lessonPlaceholder: "MASTER DA DEFINIRE",
       },
       {
-        date: "22 MARZO",
+        date: "22 Marzo",
         master: "Mimo Vo",
         image: "/images/master_12.webp",
         lessonPlaceholder: "Seul",
