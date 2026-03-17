@@ -258,13 +258,15 @@ export const programTracks: ProgramTrack[] = [
         date: "24 Gennaio",
         master: "Marco Sorrentino",
         image: "/images/master_01.webp",
-        lessonPlaceholder: "Stiletto Creative"
+        lessonPlaceholder: "Stiletto Creative",
+        imagePosition: "50% 35%",
       },
       {
         date: "25 Gennaio",
         master: "Valentina Petrocco",
         image: "/images/master_02.webp",
         lessonPlaceholder: "Mandorla Russa",
+        imagePosition: "50% 30%",
       },
       {
         date: "14 Febbraio",
@@ -310,19 +312,21 @@ export const programTracks: ProgramTrack[] = [
         master: "Giulia Sago",
         image: "/images/master_07.webp",
         lessonPlaceholder: "Realistic",
+        imagePosition: "50% 30%",
       },
       {
         date: "21 Febbraio",
         master: "Mariann Molnar",
         image: "/images/master_08.webp",
         lessonPlaceholder: "Moma Square",
+        imagePosition: "50% 25%",
       },
       {
         date: "22 Febbraio",
         master: "Tanya Povenskaya",
         image: "/images/master_09.webp",
         lessonPlaceholder: "Extreme",
-        imagePosition: "50% 15%",
+        imagePosition: "50% 10%",
       },
       {
         date: "20 Marzo",

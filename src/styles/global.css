@@ -501,7 +501,8 @@ header.site-header {
 
 .schedule-card img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: 312px;
+  max-height: 312px;
   object-fit: cover;
   background: #efe3d9;
   transition: transform 420ms ease;

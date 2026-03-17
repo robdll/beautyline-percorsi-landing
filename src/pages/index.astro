@@ -573,6 +573,8 @@ const homeJsonLd = [organizationSchema, faqSchema];
         const usesMolinarCarousel =
           normalizedCourseName === "moma square" || normalizedMasterName.includes("molinar");
         const usesMinoVoCarousel = normalizedMasterName.includes("mino vo");
+        const usesMarcoSorrentinoCarousel =
+          normalizedCourseName === "stiletto creative" || normalizedMasterName.includes("marco sorrentino");
 
         carouselImages = usesMolinarCarousel
           ? [
@@ -587,6 +589,8 @@ const homeJsonLd = [organizationSchema, faqSchema];
             ]
           : usesMinoVoCarousel
             ? ["/images/seul-1.webp"]
+            : usesMarcoSorrentinoCarousel
+              ? ["/images/stiletto.webp"]
             : ["/images/logo-circle.png", "/images/logo-bl.png"];
         currentSlide = 0;
         renderSlide();
