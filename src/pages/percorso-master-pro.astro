@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { pageContent, programTracks } from "../data/percorsi";
+
+const track = programTracks.find((item) => item.name === "Percorso Master Pro");
+const title = "Percorso Master Pro | Beauty Line Academy";
+const description =
+  "Percorso Master Pro a Monza: formazione nails con 6 giornate, Master nazionali e internazionali, valutazione tecnica e certificazione finale.";
+
+const courseSchema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: "Percorso Master Pro",
+  description,
+  provider: {
+    "@type": "Organization",
+    name: pageContent.brand,
+    sameAs: pageContent.siteUrl,
+  },
+};
+---
+
+<BaseLayout title={title} description={description} jsonLd={courseSchema}>
+  <main>
+    <section class="section">
+      <div class="container">
+        <article class="card content-card">
+          <h1 class="section-title">Percorso Master Pro</h1>
+          <p class="section-subtitle">
+            Crescita tecnica completa per onicotecniche che vogliono costruire metodo, precisione e visione
+            professionale con un percorso formativo strutturato.
+          </p>
+          <p>{track?.description}</p>
+          <p>{track?.description2}</p>
+          <h2>Cosa include il percorso</h2>
+          <ul>
+            <li>6 giornate di formazione con Master nazionali e internazionali</li>
+            <li>Classi a numero chiuso, massimo 12 partecipanti</li>
+            <li>Valutazione tecnica progressiva durante tutto il percorso</li>
+            <li>6 attestati di partecipazione e certificazione finale</li>
+            <li>Kit professionale omaggio e confronto diretto con i Master</li>
+          </ul>
+          <h2>Programma giornate</h2>
+          <ul>
+            {track?.sessions.map((session) => (
+              <li><strong>{session.date}</strong> - {session.master}: {session.lessonPlaceholder}</li>
+            ))}
+          </ul>
+          <p class="marked-text">Quota di iscrizione: 299 EUR per bloccare il posto.</p>
+          <p>
+            <a class="btn btn-primary" href="/#contatti">Richiedi informazioni</a>
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

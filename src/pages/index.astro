@@ -6,12 +6,45 @@ const trackAnchors: Record<string, string> = {
   "Percorso Master Pro": "percorso-master-pro",
   "Percorso Master Experience": "percorso-master-experience",
 };
+const trackPageRoutes: Record<string, string> = {
+  "Percorso Master Pro": "/percorso-master-pro",
+  "Percorso Master Experience": "/percorso-master-experience",
+};
+
+const seoDescription =
+  "Percorsi Master Beauty Line Academy: formazione nails con Master nazionali e internazionali a Monza. Solo 12 posti per percorso. Prenota con acconto di 299 EUR.";
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: pageContent.brand,
+  url: pageContent.siteUrl,
+  telephone: pageContent.contactPhone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Via Michelangelo Buonarroti 24",
+    addressLocality: "Monza",
+    addressCountry: "IT",
+  },
+};
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: pageContent.faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+const homeJsonLd = [organizationSchema, faqSchema];
 ---
 
-<BaseLayout title="Percorsi Master | Beauty Line Academy" description={pageContent.hero.description}>
+<BaseLayout title="Percorsi Master | Beauty Line Academy" description={seoDescription} jsonLd={homeJsonLd}>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#" class="brand-logo-link" aria-label={pageContent.brand}>
+      <a href="/" class="brand-logo-link" aria-label={pageContent.brand}>
         <img src="/images/logo-bl.png" alt={pageContent.brand} class="brand-logo brand-logo-header" />
       </a>
       <button
@@ -75,7 +108,7 @@ const trackAnchors: Record<string, string> = {
           {percorsi.map((percorso) => (
             <a
               class="percorso-card-link"
-              href={`#${trackAnchors[percorso.name] ?? sectionAnchors.programma}`}
+              href={trackPageRoutes[percorso.name] ?? `#${trackAnchors[percorso.name] ?? sectionAnchors.programma}`}
               aria-label={`Vai a ${percorso.name}`}
             >
               <article class="card content-card percorso-summary-card">
@@ -213,6 +246,9 @@ const trackAnchors: Record<string, string> = {
                       src={session.image}
                       alt={`Master ${session.master}`}
                       loading="lazy"
+                      decoding="async"
+                      width="640"
+                      height="760"
                       style={session.imagePosition ? `object-position: ${session.imagePosition};` : undefined}
                     />
                   )}
@@ -387,9 +423,12 @@ const trackAnchors: Record<string, string> = {
             <article class="card sponsor-card">
               <img
                 src="/images/sponsor-1.webp"
-                alt={`Logo sponsor placeholder ${index + 1}`}
+                alt={`Logo sponsor partner Beauty Line Academy ${index + 1}`}
                 class="sponsor-logo"
                 loading="lazy"
+                decoding="async"
+                width="280"
+                height="120"
               />
             </article>
           ))}
@@ -426,6 +465,9 @@ const trackAnchors: Record<string, string> = {
       </p>
       <p>{pageContent.contactAddress}</p>
       <p>Info e iscrizioni: {pageContent.contactPhone}</p>
+      <p>
+        <a href="/cookie-policy">Cookie Policy</a> | <a href="/privacy-policy">Privacy Policy</a>
+      </p>
       <p>
         Sito ufficiale: <a href={pageContent.siteUrl} target="_blank" rel="noreferrer">{pageContent.siteUrl}</a>
       </p>
@@ -517,7 +559,10 @@ const trackAnchors: Record<string, string> = {
         if (carouselImages.length === 0) return;
 
         carouselImageEl.src = carouselImages[currentSlide];
-        carouselImageEl.alt = `Slide ${currentSlide + 1}`;
+        const modalTitle = titleEl instanceof HTMLElement ? titleEl.textContent?.trim() : "";
+        carouselImageEl.alt = modalTitle
+          ? `${modalTitle} - immagine ${currentSlide + 1}`
+          : `Galleria master - immagine ${currentSlide + 1}`;
       };
 
       const closeMasterModal = () => {

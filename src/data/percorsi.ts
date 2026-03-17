@@ -49,7 +49,7 @@ export const pageContent = {
       "MASTER NAZIONALI, INTERNAZIONALI E MONDIALI • TECNICHE AVANZATE • CERTIFICAZIONE FINALE • SOLO 12 POSTI DISPONIBILI",
     ctaPrimary: "Prenota ora",
     ctaSecondary: "Scopri i Percorsi",
-    imageAlt: "Placeholder hero Percorsi Master",
+    imageAlt: "Onicotecnica durante una sessione avanzata dei Percorsi Master Beauty Line Academy",
     imagePlaceholder: "Sostituire con foto hero ufficiale",
   },
   comparisonIntro:

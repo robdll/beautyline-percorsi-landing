@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { pageContent, programTracks } from "../data/percorsi";
+
+const track = programTracks.find((item) => item.name === "Percorso Master Experience");
+const title = "Percorso Master Experience | Beauty Line Academy";
+const description =
+  "Percorso Master Experience a Monza: formazione nails avanzata con Master internazionali e mondiali, full immersion tecnica e certificazione finale.";
+
+const courseSchema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: "Percorso Master Experience",
+  description,
+  provider: {
+    "@type": "Organization",
+    name: pageContent.brand,
+    sameAs: pageContent.siteUrl,
+  },
+};
+---
+
+<BaseLayout title={title} description={description} jsonLd={courseSchema}>
+  <main>
+    <section class="section">
+      <div class="container">
+        <article class="card content-card">
+          <h1 class="section-title">Percorso Master Experience</h1>
+          <p class="section-subtitle">
+            Formazione intensiva dedicata a onicotecniche con esperienza che vogliono confrontarsi con Master
+            internazionali e mondiali e alzare il proprio standard tecnico.
+          </p>
+          <p>{track?.description}</p>
+          <p>{track?.description2}</p>
+          <h2>Cosa include il percorso</h2>
+          <ul>
+            <li>6 giornate di formazione avanzata con Master internazionali e mondiali</li>
+            <li>Classi a numero chiuso, massimo 12 partecipanti</li>
+            <li>Valutazione tecnica durante tutte le sessioni pratiche</li>
+            <li>6 attestati di partecipazione e certificazione finale di alto livello</li>
+            <li>Full immersion tecnica, kit omaggio e confronto diretto con professionisti globali</li>
+          </ul>
+          <h2>Programma giornate</h2>
+          <ul>
+            {track?.sessions.map((session) => (
+              <li><strong>{session.date}</strong> - {session.master}: {session.lessonPlaceholder}</li>
+            ))}
+          </ul>
+          <p class="marked-text">Quota di iscrizione: 299 EUR per bloccare il posto.</p>
+          <p>
+            <a class="btn btn-primary" href="/#contatti">Richiedi informazioni</a>
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
