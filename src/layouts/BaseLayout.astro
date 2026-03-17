@@ -22,5 +22,69 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <slot />
+    <aside
+      class="cookie-consent-banner"
+      data-cookie-banner
+      role="region"
+      aria-label="Preferenze cookie"
+      hidden
+    >
+      <p>
+        Utilizziamo cookie tecnici necessari e, previo tuo consenso, cookie di analisi e pubblicitari per Google
+        Analytics e Google Ads, al fine di migliorare la tua esperienza e misurare le performance del sito.
+      </p>
+      <div class="cookie-consent-actions">
+        <button class="btn btn-primary" type="button" data-cookie-accept-all>
+          Accetta tutti
+        </button>
+        <button class="btn btn-secondary" type="button" data-cookie-essential-only>
+          Solo essenziali
+        </button>
+        <a href="/cookie-policy" class="cookie-consent-link">Maggiori dettagli</a>
+      </div>
+    </aside>
+    <script>
+      const COOKIE_CONSENT_KEY = "cookieConsentChoice";
+      const COOKIE_ACCEPTED_VALUE = "accepted_all";
+      const COOKIE_ESSENTIAL_VALUE = "essential_only";
+
+      const consentBanner = document.querySelector("[data-cookie-banner]");
+      const acceptAllButton = document.querySelector("[data-cookie-accept-all]");
+      const essentialOnlyButton = document.querySelector("[data-cookie-essential-only]");
+
+      const initializeTrackingScripts = () => {
+        // Placeholder: initialize Google Analytics and Google Ads only after explicit consent.
+        // Example: load gtag.js and configure measurement/ads conversion IDs here.
+        console.info("Cookie consent granted: initialize Google Analytics and Google Ads scripts.");
+      };
+
+      const setConsentChoice = (choice: string) => {
+        localStorage.setItem(COOKIE_CONSENT_KEY, choice);
+        if (consentBanner instanceof HTMLElement) {
+          consentBanner.setAttribute("hidden", "");
+        }
+      };
+
+      const storedConsent = localStorage.getItem(COOKIE_CONSENT_KEY);
+
+      if (storedConsent === COOKIE_ACCEPTED_VALUE) {
+        initializeTrackingScripts();
+      } else if (!storedConsent && consentBanner instanceof HTMLElement) {
+        consentBanner.removeAttribute("hidden");
+      }
+
+      if (acceptAllButton instanceof HTMLButtonElement) {
+        acceptAllButton.addEventListener("click", () => {
+          setConsentChoice(COOKIE_ACCEPTED_VALUE);
+          initializeTrackingScripts();
+        });
+      }
+
+      if (essentialOnlyButton instanceof HTMLButtonElement) {
+        essentialOnlyButton.addEventListener("click", () => {
+          setConsentChoice(COOKIE_ESSENTIAL_VALUE);
+        });
+      }
+    </script>
   </body>
 </html>

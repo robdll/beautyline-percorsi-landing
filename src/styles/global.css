@@ -802,6 +802,46 @@ footer {
   color: var(--muted);
 }
 
+.cookie-consent-banner {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  width: min(980px, calc(100vw - 24px));
+  z-index: 70;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 16px 34px rgba(42, 29, 21, 0.14);
+  padding: 16px;
+}
+
+.cookie-consent-banner p {
+  margin: 0;
+  color: #4f3a2d;
+  font-size: 0.95rem;
+}
+
+.cookie-consent-actions {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.cookie-consent-link {
+  color: #6d3d22;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+}
+
+.cookie-consent-link:hover,
+.cookie-consent-link:focus-visible {
+  color: #4f2e1a;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .schedule-card img {
     transition: none;
@@ -858,6 +898,16 @@ footer {
 
   .header-nav a {
     padding: 4px 0;
+  }
+
+  .cookie-consent-banner {
+    bottom: 10px;
+    width: calc(100vw - 18px);
+    padding: 14px;
+  }
+
+  .cookie-consent-actions .btn {
+    width: 100%;
   }
 }
 
