@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { pageContent, programTracks, sectionAnchors } from "../data/percorsi";
+import SiteFooter from "../components/SiteFooter.astro";
 
 const track = programTracks.find((item) => item.name === "Percorso Master Pro");
 const title = "Percorso Master Pro | Beauty Line Academy";
@@ -117,21 +118,7 @@ const courseSchema = {
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <p>
-        <img src="/images/logo-bl.png" alt={pageContent.brand} class="brand-logo brand-logo-footer" />
-      </p>
-      <p>{pageContent.contactAddress}</p>
-      <p>Info e iscrizioni: {pageContent.contactPhone}</p>
-      <p>
-        <a href="/cookie-policy">Cookie Policy</a> | <a href="/privacy-policy">Privacy Policy</a>
-      </p>
-      <p>
-        Sito ufficiale: <a href={pageContent.siteUrl} target="_blank" rel="noreferrer">{pageContent.siteUrl}</a>
-      </p>
-    </div>
-  </footer>
+  <SiteFooter />
 
   <script>
     const navToggle = document.querySelector("[data-nav-toggle]");

@@ -1,0 +1,32 @@
+---
+import { pageContent } from "../data/percorsi";
+
+const websiteLinks = [
+  { href: "/", label: "Home" },
+  { href: "/percorso-master-pro", label: "Percorso Master Pro" },
+  { href: "/percorso-master-experience", label: "Percorso Master Experience" },
+  { href: pageContent.siteUrl, label: "Sito ufficiale", external: true },
+  { href: "/cookie-policy", label: "Cookie Policy" },
+  { href: "/privacy-policy", label: "Privacy Policy" },
+];
+---
+
+<footer class="site-footer">
+  <div class="container site-footer-grid">
+    <div class="site-footer-main">
+      <p>
+        <img src="/images/logo-bl.png" alt={pageContent.brand} class="brand-logo brand-logo-footer" />
+      </p>
+      <p>{pageContent.contactAddress}</p>
+      <p>Info e iscrizioni: {pageContent.contactPhone}</p>
+    </div>
+    <div class="site-footer-links-col">
+      <p class="site-footer-links-title">Link utili</p>
+      {websiteLinks.map((link) => (
+        <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noreferrer" : undefined}>
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</footer>
