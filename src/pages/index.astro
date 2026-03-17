@@ -6,10 +6,6 @@ const trackAnchors: Record<string, string> = {
   "Percorso Master Pro": "percorso-master-pro",
   "Percorso Master Experience": "percorso-master-experience",
 };
-const trackPageRoutes: Record<string, string> = {
-  "Percorso Master Pro": "/percorso-master-pro",
-  "Percorso Master Experience": "/percorso-master-experience",
-};
 
 const seoDescription =
   "Percorsi Master Beauty Line Academy: formazione nails con Master nazionali e internazionali a Monza. Solo 12 posti per percorso. Prenota con acconto di 299 EUR.";
@@ -108,7 +104,7 @@ const homeJsonLd = [organizationSchema, faqSchema];
           {percorsi.map((percorso) => (
             <a
               class="percorso-card-link"
-              href={trackPageRoutes[percorso.name] ?? `#${trackAnchors[percorso.name] ?? sectionAnchors.programma}`}
+              href={`#${trackAnchors[percorso.name] ?? sectionAnchors.programma}`}
               aria-label={`Vai a ${percorso.name}`}
             >
               <article class="card content-card percorso-summary-card">
