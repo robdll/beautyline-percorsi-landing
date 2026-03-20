@@ -9,6 +9,8 @@ import {
 } from "../data/percorsi";
 import SiteFooter from "../components/SiteFooter.astro";
 
+const heroCarouselImages = pageContent.hero.carouselImages;
+
 const trackAnchors: Record<string, string> = {
   "Percorso Master Pro": "percorso-master-pro",
   "Percorso Master Experience": "percorso-master-experience",
@@ -85,8 +87,52 @@ const homeJsonLd = [organizationSchema, faqSchema];
             <a class="btn btn-secondary" href={`#${sectionAnchors.percorsi}`}>{pageContent.hero.ctaSecondary}</a>
           </div>
         </div>
-        <div class="placeholder-media" role="img" aria-label={pageContent.hero.imageAlt}>
-          {pageContent.hero.imagePlaceholder}
+        <div
+          class="hero-carousel"
+          data-hero-carousel
+          role="region"
+          aria-label={pageContent.hero.imageAlt}
+        >
+          <div class="hero-carousel-viewport">
+            <img
+              src={heroCarouselImages[0]}
+              alt=""
+              class="hero-carousel-img"
+              data-hero-carousel-img
+              width="640"
+              height="800"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </div>
+          <button
+            type="button"
+            class="hero-carousel-control hero-carousel-prev"
+            data-hero-carousel-prev
+            aria-label="Immagine precedente"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            class="hero-carousel-control hero-carousel-next"
+            data-hero-carousel-next
+            aria-label="Immagine successiva"
+          >
+            ›
+          </button>
+          <div class="hero-carousel-dots" role="group" aria-label="Seleziona immagine">
+            {heroCarouselImages.map((_, i) => (
+              <button
+                type="button"
+                class:list={["hero-carousel-dot", i === 0 && "is-active"]}
+                data-hero-carousel-dot={String(i)}
+                aria-label={`Immagine ${i + 1} di ${heroCarouselImages.length}`}
+                aria-current={i === 0 ? "true" : "false"}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -466,7 +512,7 @@ const homeJsonLd = [organizationSchema, faqSchema];
 
   <SiteFooter />
 
-  <script define:vars={{ defaultModalCarouselImages }}>
+  <script define:vars={{ defaultModalCarouselImages, heroCarouselImages, heroImageAlt: pageContent.hero.imageAlt }}>
     const navToggle = document.querySelector("[data-nav-toggle]");
     const headerNav = document.querySelector("[data-header-nav]");
     const leadForm = document.querySelector("[data-lead-form]");
@@ -631,6 +677,81 @@ const homeJsonLd = [organizationSchema, faqSchema];
           closeMasterModal();
         }
       });
+    }
+
+    const heroRoot = document.querySelector("[data-hero-carousel]");
+    if (heroRoot instanceof HTMLElement) {
+      const heroImg = heroRoot.querySelector("[data-hero-carousel-img]");
+      const heroPrev = heroRoot.querySelector("[data-hero-carousel-prev]");
+      const heroNext = heroRoot.querySelector("[data-hero-carousel-next]");
+      const heroDots = heroRoot.querySelectorAll("[data-hero-carousel-dot]");
+      let heroIdx = 0;
+      const heroSlides = heroCarouselImages;
+      const heroTotal = heroSlides.length;
+
+      const renderHero = () => {
+        if (!(heroImg instanceof HTMLImageElement)) return;
+        heroImg.src = heroSlides[heroIdx];
+        heroImg.alt = `${heroImageAlt} - immagine ${heroIdx + 1} di ${heroTotal}`;
+        heroDots.forEach((dot, j) => {
+          if (!(dot instanceof HTMLButtonElement)) return;
+          const on = j === heroIdx;
+          dot.classList.toggle("is-active", on);
+          dot.setAttribute("aria-current", on ? "true" : "false");
+        });
+      };
+
+      const heroGo = (delta) => {
+        heroIdx = (heroIdx + delta + heroTotal) % heroTotal;
+        renderHero();
+      };
+
+      if (heroPrev instanceof HTMLButtonElement) {
+        heroPrev.addEventListener("click", () => heroGo(-1));
+      }
+      if (heroNext instanceof HTMLButtonElement) {
+        heroNext.addEventListener("click", () => heroGo(1));
+      }
+      heroDots.forEach((dot, j) => {
+        dot.addEventListener("click", () => {
+          heroIdx = j;
+          renderHero();
+        });
+      });
+
+      let heroTimer = null;
+      let heroHover = false;
+      const heroStartAutoplay = () => {
+        if (heroTimer || heroTotal <= 1 || heroHover || document.hidden) return;
+        heroTimer = window.setInterval(() => heroGo(1), 6000);
+      };
+      const heroStopAutoplay = () => {
+        if (heroTimer) {
+          clearInterval(heroTimer);
+          heroTimer = null;
+        }
+      };
+
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        heroRoot.addEventListener("mouseenter", () => {
+          heroHover = true;
+          heroStopAutoplay();
+        });
+        heroRoot.addEventListener("mouseleave", () => {
+          heroHover = false;
+          heroStartAutoplay();
+        });
+        document.addEventListener("visibilitychange", () => {
+          if (document.hidden) {
+            heroStopAutoplay();
+          } else {
+            heroStartAutoplay();
+          }
+        });
+        heroStartAutoplay();
+      }
+
+      renderHero();
     }
   </script>
 

@@ -69,7 +69,15 @@ export const pageContent = {
     ctaPrimary: "Prenota ora",
     ctaSecondary: "Scopri i Percorsi",
     imageAlt: "Onicotecnica durante una sessione avanzata dei Percorsi Master Beauty Line Academy",
-    imagePlaceholder: "Sostituire con foto hero ufficiale",
+    carouselImages: [
+      "/images/hero-beautyline-team-flowers.webp",
+      "/images/hero-class-certificates-wide.webp",
+      "/images/hero-studio-group-vanity.webp",
+      "/images/hero-certificates-celebration-01.webp",
+      "/images/hero-nail-art-radial.webp",
+      "/images/hero-certificates-celebration-02.webp",
+      "/images/hero-masterclass-demo.webp",
+    ],
   },
   comparisonIntro:
     "Due percorsi formativi esclusivi creati da Beauty Line Academy per offrirti una vera esperienza professionale e portare la tua tecnica a un livello superiore.",
