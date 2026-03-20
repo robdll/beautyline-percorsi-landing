@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { pageContent, percorsi, programTracks, sectionAnchors } from "../data/percorsi";
+import {
+  defaultModalCarouselImages,
+  pageContent,
+  percorsi,
+  programTracks,
+  sectionAnchors,
+} from "../data/percorsi";
 import SiteFooter from "../components/SiteFooter.astro";
 
 const trackAnchors: Record<string, string> = {
@@ -266,6 +272,9 @@ const homeJsonLd = [organizationSchema, faqSchema];
                         data-course-date={session.date}
                         data-start-time="9.00"
                         data-end-time="18:00"
+                        data-modal-carousel-images={JSON.stringify(
+                          session.modalCarouselImages ?? defaultModalCarouselImages,
+                        )}
                       >
                         Scopri
                       </button>
@@ -457,7 +466,7 @@ const homeJsonLd = [organizationSchema, faqSchema];
 
   <SiteFooter />
 
-  <script>
+  <script define:vars={{ defaultModalCarouselImages }}>
     const navToggle = document.querySelector("[data-nav-toggle]");
     const headerNav = document.querySelector("[data-header-nav]");
     const leadForm = document.querySelector("[data-lead-form]");
@@ -534,7 +543,7 @@ const homeJsonLd = [organizationSchema, faqSchema];
       const prevButton = masterModal.querySelector("[data-carousel-prev]");
       const nextButton = masterModal.querySelector("[data-carousel-next]");
 
-      let carouselImages: string[] = [];
+      let carouselImages = [];
       let currentSlide = 0;
 
       const renderSlide = () => {
@@ -553,7 +562,7 @@ const homeJsonLd = [organizationSchema, faqSchema];
         document.body.style.overflow = "";
       };
 
-      const openMasterModal = (button: HTMLElement) => {
+      const openMasterModal = (button) => {
         if (
           !(titleEl instanceof HTMLElement) ||
           !(descriptionEl instanceof HTMLParagraphElement) ||
@@ -568,30 +577,16 @@ const homeJsonLd = [organizationSchema, faqSchema];
         const startTime = button.dataset.startTime || "9.00";
         const endTime = button.dataset.endTime || "18:00";
         const trackName = button.dataset.trackName || "";
-        const normalizedCourseName = courseName.trim().toLowerCase();
-        const normalizedMasterName = masterName.trim().toLowerCase();
-        const usesMolinarCarousel =
-          normalizedCourseName === "moma square" || normalizedMasterName.includes("molinar");
-        const usesMinoVoCarousel = normalizedMasterName.includes("mino vo");
-        const usesMarcoSorrentinoCarousel =
-          normalizedCourseName === "stiletto creative" || normalizedMasterName.includes("marco sorrentino");
-
-        carouselImages = usesMolinarCarousel
-          ? [
-              "/images/molinar-1.webp",
-              "/images/molinar-2.webp",
-              "/images/molinar-3.webp",
-              "/images/molinar-4.webp",
-              "/images/molinar-5.webp",
-              "/images/molinar-6.webp",
-              "/images/molinar-7.webp",
-              "/images/molinar-8.webp",
-            ]
-          : usesMinoVoCarousel
-            ? ["/images/seul-1.webp"]
-            : usesMarcoSorrentinoCarousel
-              ? ["/images/stiletto.webp"]
-            : ["/images/logo-circle.png", "/images/logo-bl.png"];
+        const carouselJson = button.dataset.modalCarouselImages || "[]";
+        try {
+          const parsed = JSON.parse(carouselJson);
+          carouselImages = Array.isArray(parsed) ? parsed.filter((u) => typeof u === "string") : [];
+        } catch {
+          carouselImages = [];
+        }
+        if (carouselImages.length === 0) {
+          carouselImages = [...defaultModalCarouselImages];
+        }
         currentSlide = 0;
         renderSlide();
 

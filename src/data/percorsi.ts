@@ -20,7 +20,26 @@ export type ProgramSession = {
   lessonPlaceholder: string;
   imagePosition?: string;
   isCeremony?: boolean;
+  /** Images for the "Scopri" modal carousel. Defaults to `defaultModalCarouselImages` when omitted. */
+  modalCarouselImages?: string[];
 };
+
+/** Fallback gallery when a session does not define `modalCarouselImages`. */
+export const defaultModalCarouselImages: string[] = [
+  "/images/logo-circle.png",
+  "/images/logo-bl.png",
+];
+
+export const modalCarouselImagesMolinar: string[] = [
+  "/images/molinar-1.webp",
+  "/images/molinar-2.webp",
+  "/images/molinar-3.webp",
+  "/images/molinar-4.webp",
+  "/images/molinar-5.webp",
+  "/images/molinar-6.webp",
+  "/images/molinar-7.webp",
+  "/images/molinar-8.webp",
+];
 
 export type ProgramTrack = {
   name: string;
@@ -260,6 +279,7 @@ export const programTracks: ProgramTrack[] = [
         image: "/images/master_01.webp",
         lessonPlaceholder: "Stiletto Creative",
         imagePosition: "50% 35%",
+        modalCarouselImages: ["/images/stiletto.webp"],
       },
       {
         date: "25 Gennaio",
@@ -292,6 +312,7 @@ export const programTracks: ProgramTrack[] = [
         master: "Irina Primo",
         image: "/images/master_06.webp",
         lessonPlaceholder: "Dragon",
+        modalCarouselImages: ["/images/irina-primo.webp"],
       },
       {
         date: "11 Aprile",
@@ -320,6 +341,7 @@ export const programTracks: ProgramTrack[] = [
         image: "/images/master_08.webp",
         lessonPlaceholder: "Moma Square",
         imagePosition: "50% 25%",
+        modalCarouselImages: modalCarouselImagesMolinar,
       },
       {
         date: "22 Febbraio",
@@ -346,6 +368,7 @@ export const programTracks: ProgramTrack[] = [
         image: "/images/master_12.webp",
         lessonPlaceholder: "Seul",
         imagePosition: "50% 0%",
+        modalCarouselImages: ["/images/seul-1.webp"],
       },
       {
         date: "11 Aprile",
