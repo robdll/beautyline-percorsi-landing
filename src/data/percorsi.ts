@@ -366,17 +366,17 @@ export const programTracks: ProgramTrack[] = [
       },
       {
         date: "21 Marzo",
-        master: "Da Definire",
+        master: "Mino Vo",
         image: "/images/master_11.webp",
-        lessonPlaceholder: "Da definire",
+        lessonPlaceholder: "Seul",
+        modalCarouselImages: ["/images/seul-1.webp"],
+        imagePosition: "50% 0%",
       },
       {
         date: "22 Marzo",
-        master: "Mino Vo",
+        master: "Leon Cabriale",
         image: "/images/master_12.webp",
-        lessonPlaceholder: "Seul",
-        imagePosition: "50% 0%",
-        modalCarouselImages: ["/images/seul-1.webp"],
+        lessonPlaceholder: "Da definire",
       },
       {
         date: "11 Aprile",
