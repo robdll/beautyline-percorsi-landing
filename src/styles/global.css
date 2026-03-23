@@ -865,7 +865,7 @@ header.site-header {
   border: 2px solid #8c63aaaa;
   box-shadow:
     0 2px 4px rgba(45, 35, 85, 0.08),
-    0 8px 20px rgba(55, 40, 100, 0.14),
+    0 8px 20px rgba(55, 40, 100, 0.6),
     0 20px 44px rgba(40, 30, 75, 0.2);
 }
 
