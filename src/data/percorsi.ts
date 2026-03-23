@@ -340,7 +340,14 @@ export const programTracks: ProgramTrack[] = [
         date: "20 Febbraio",
         master: "Silvia Gago",
         image: "/images/master_07.webp",
-        lessonPlaceholder: "Realistic",
+        lessonPlaceholder: "Realistic Animals",
+        modalCarouselImages: [
+          "/images/realistic-animal-2.webp",
+          "/images/realistic-animal-5.webp",
+          "/images/realistic-animal-3.webp",
+          "/images/realistic-animal-4.webp",
+          "/images/realistic-animal-1.webp",
+        ],
         imagePosition: "50% 30%",
       },
       {
