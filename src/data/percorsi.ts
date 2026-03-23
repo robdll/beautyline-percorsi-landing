@@ -20,7 +20,7 @@ export type ProgramSession = {
   lessonPlaceholder: string;
   imagePosition?: string;
   isCeremony?: boolean;
-  /** Images for the "Scopri" modal carousel. Defaults to `defaultModalCarouselImages` when omitted. */
+  /** Media URLs for the "Scopri" modal carousel (images or video: `.webp`, `.mp4`, `.webm`, `.mov`). Defaults to `defaultModalCarouselImages` when omitted. */
   modalCarouselImages?: string[];
 };
 
@@ -342,6 +342,7 @@ export const programTracks: ProgramTrack[] = [
         image: "/images/master_07.webp",
         lessonPlaceholder: "Realistic Animals",
         modalCarouselImages: [
+          "/images/realistic-animals-master.mp4",
           "/images/realistic-animal-2.webp",
           "/images/realistic-animal-5.webp",
           "/images/realistic-animal-3.webp",

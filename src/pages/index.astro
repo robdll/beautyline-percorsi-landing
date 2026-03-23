@@ -503,11 +503,19 @@ const homeJsonLd = [organizationSchema, faqSchema];
     <div class="master-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="master-modal-title">
       <button type="button" class="master-modal-close" aria-label="Chiudi" data-close-master-modal>&times;</button>
       <div class="master-carousel">
-        <button type="button" class="carousel-control" aria-label="Immagine precedente" data-carousel-prev>
+        <button type="button" class="carousel-control" aria-label="Slide precedente" data-carousel-prev>
           &#8249;
         </button>
+        <video
+          class="master-carousel-video"
+          data-carousel-video
+          hidden
+          playsinline
+          controls
+          preload="metadata"
+        ></video>
         <img src="" alt="" class="master-carousel-image" data-carousel-image />
-        <button type="button" class="carousel-control" aria-label="Immagine successiva" data-carousel-next>
+        <button type="button" class="carousel-control" aria-label="Slide successiva" data-carousel-next>
           &#8250;
         </button>
       </div>
@@ -595,24 +603,59 @@ const homeJsonLd = [organizationSchema, faqSchema];
       const descriptionEl = masterModal.querySelector("[data-modal-description]");
       const trackEl = masterModal.querySelector("[data-modal-track]");
       const carouselImageEl = masterModal.querySelector("[data-carousel-image]");
+      const carouselVideoEl = masterModal.querySelector("[data-carousel-video]");
       const prevButton = masterModal.querySelector("[data-carousel-prev]");
       const nextButton = masterModal.querySelector("[data-carousel-next]");
 
       let carouselImages = [];
       let currentSlide = 0;
 
+      const isCarouselVideoUrl = (url) => /\.(mp4|webm|mov|m4v)(\?|#|$)/i.test(url);
+
+      const resetCarouselVideo = () => {
+        if (!(carouselVideoEl instanceof HTMLVideoElement)) return;
+        carouselVideoEl.pause();
+        carouselVideoEl.removeAttribute("src");
+        carouselVideoEl.load();
+      };
+
       const renderSlide = () => {
         if (!(carouselImageEl instanceof HTMLImageElement)) return;
         if (carouselImages.length === 0) return;
 
-        carouselImageEl.src = carouselImages[currentSlide];
+        const url = carouselImages[currentSlide];
         const modalTitle = titleEl instanceof HTMLElement ? titleEl.textContent?.trim() : "";
-        carouselImageEl.alt = modalTitle
-          ? `${modalTitle} - immagine ${currentSlide + 1}`
-          : `Galleria master - immagine ${currentSlide + 1}`;
+        const slideLabel = (kind) =>
+          modalTitle ? `${modalTitle} - ${kind} ${currentSlide + 1}` : `Galleria master - ${kind} ${currentSlide + 1}`;
+
+        if (isCarouselVideoUrl(url)) {
+          if (!(carouselVideoEl instanceof HTMLVideoElement)) return;
+          carouselImageEl.hidden = true;
+          carouselVideoEl.hidden = false;
+          carouselVideoEl.src = url;
+          carouselVideoEl.setAttribute("aria-label", slideLabel("video"));
+          carouselVideoEl.load();
+        } else {
+          if (carouselVideoEl instanceof HTMLVideoElement) {
+            carouselVideoEl.pause();
+            carouselVideoEl.removeAttribute("src");
+            carouselVideoEl.load();
+            carouselVideoEl.hidden = true;
+          }
+          carouselImageEl.hidden = false;
+          carouselImageEl.src = url;
+          carouselImageEl.alt = slideLabel("immagine");
+        }
       };
 
       const closeMasterModal = () => {
+        resetCarouselVideo();
+        if (carouselImageEl instanceof HTMLImageElement) {
+          carouselImageEl.hidden = false;
+        }
+        if (carouselVideoEl instanceof HTMLVideoElement) {
+          carouselVideoEl.hidden = true;
+        }
         masterModal.setAttribute("hidden", "");
         document.body.style.overflow = "";
       };
@@ -643,11 +686,11 @@ const homeJsonLd = [organizationSchema, faqSchema];
           carouselImages = [...defaultModalCarouselImages];
         }
         currentSlide = 0;
-        renderSlide();
-
         titleEl.textContent = `${courseName} - ${masterName}`;
         trackEl.textContent = trackName;
         descriptionEl.textContent = `Il corso ${courseName} del Master ${masterName} si terrà il giorno ${courseDate} dalle ore ${startTime} alle ${endTime}.`;
+        renderSlide();
+
         masterModal.removeAttribute("hidden");
         document.body.style.overflow = "hidden";
       };
