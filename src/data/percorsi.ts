@@ -338,7 +338,7 @@ export const programTracks: ProgramTrack[] = [
     sessions: [
       {
         date: "20 Febbraio",
-        master: "Giulia Sago",
+        master: "Silvia Gago",
         image: "/images/master_07.webp",
         lessonPlaceholder: "Realistic",
         imagePosition: "50% 30%",
