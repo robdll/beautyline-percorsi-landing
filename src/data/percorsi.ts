@@ -370,7 +370,8 @@ export const programTracks: ProgramTrack[] = [
         date: "20 Marzo",
         master: "Da Definire",
         image: "/images/master_10.webp",
-        lessonPlaceholder: "Da definire",
+        lessonPlaceholder: "Krisztián Újvári",
+        imagePosition: "50% 15%",
       },
       {
         date: "21 Marzo",
