@@ -368,7 +368,7 @@ export const programTracks: ProgramTrack[] = [
       },
       {
         date: "20 Marzo",
-        master: "Krisztián Újvári",
+        master: "Krisztina Újvári",
         image: "/images/master_10.webp",
         lessonPlaceholder: "Da Definire",
         imagePosition: "50% 15%",
