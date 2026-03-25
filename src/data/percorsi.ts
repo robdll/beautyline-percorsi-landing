@@ -353,7 +353,7 @@ export const programTracks: ProgramTrack[] = [
       },
       {
         date: "21 Febbraio",
-        master: "Mariann Molnar",
+        master: "Mariann Molnár",
         image: "/images/master_08.webp",
         lessonPlaceholder: "Moma Square",
         imagePosition: "50% 25%",
@@ -361,7 +361,7 @@ export const programTracks: ProgramTrack[] = [
       },
       {
         date: "22 Febbraio",
-        master: "Tanya Povenskaya",
+        master: "Tania Povenskaya",
         image: "/images/master_09.webp",
         lessonPlaceholder: "Extreme",
         imagePosition: "50% 10%",
@@ -383,7 +383,7 @@ export const programTracks: ProgramTrack[] = [
       },
       {
         date: "22 Marzo",
-        master: "Leon Cabriale",
+        master: "Leon Cabriales",
         image: "/images/master_12.webp",
         lessonPlaceholder: "Da definire",
       },
