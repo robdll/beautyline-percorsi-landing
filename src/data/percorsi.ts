@@ -377,7 +377,7 @@ export const programTracks: ProgramTrack[] = [
         date: "20 Marzo",
         master: "Krisztina Újvári",
         image: "/images/master_10.webp",
-        lessonPlaceholder: "Da Definire",
+        lessonPlaceholder: "Ethereal Butterfly Almond",
         imagePosition: "50% 15%",
         modalCarouselImages: [
           "/images/krisztina-ujvari-1.webp",
