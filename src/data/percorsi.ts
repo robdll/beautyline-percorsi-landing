@@ -380,6 +380,7 @@ export const programTracks: ProgramTrack[] = [
         lessonPlaceholder: "Ethereal Butterfly Almond",
         imagePosition: "50% 15%",
         modalCarouselImages: [
+          "/images/krisztina-ujvari-0.mp4",
           "/images/krisztina-ujvari-1.webp",
           "/images/krisztina-ujvari-2.webp",
           "/images/krisztina-ujvari-3.webp",
