@@ -293,8 +293,15 @@ export const programTracks: ProgramTrack[] = [
         date: "25 Gennaio",
         master: "Valentina Petrocco",
         image: "/images/master_02.webp",
-        lessonPlaceholder: "Mandorla Russa",
+        lessonPlaceholder: "Russian Almond Double Smile",
         imagePosition: "50% 30%",
+        modalCarouselImages: [
+          "/images/valentina-petrocco-1.mp4",
+          "/images/valentina-petrocco-2.webp",
+          "/images/valentina-petrocco-3.webp",
+          "/images/valentina-petrocco-4.webp",
+          "/images/valentina-petrocco-5.webp",
+        ],
       },
       {
         date: "14 Febbraio",
@@ -372,6 +379,11 @@ export const programTracks: ProgramTrack[] = [
         image: "/images/master_10.webp",
         lessonPlaceholder: "Da Definire",
         imagePosition: "50% 15%",
+        modalCarouselImages: [
+          "/images/krisztina-ujvari-1.webp",
+          "/images/krisztina-ujvari-2.webp",
+          "/images/krisztina-ujvari-3.webp",
+        ],
       },
       {
         date: "21 Marzo",
