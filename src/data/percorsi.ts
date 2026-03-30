@@ -398,7 +398,12 @@ export const programTracks: ProgramTrack[] = [
         date: "22 Marzo",
         master: "Leon Cabriales",
         image: "/images/master_12.webp",
-        lessonPlaceholder: "Da definire",
+        lessonPlaceholder: "Diamond",
+        modalCarouselImages: [
+          "/images/cabriales.mp4",
+          "/images/cabriales.webp"
+        ],
+
       },
       {
         date: "11 Aprile",
