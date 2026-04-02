@@ -315,6 +315,7 @@ export const programTracks: ProgramTrack[] = [
         master: "Sergey Lavrukhin",
         image: "/images/master_04.webp",
         lessonPlaceholder: "Butterfly",
+        modalCarouselImages: ["/images/butterfly.webp"],
       },
       {
         date: "14 Marzo",
@@ -372,6 +373,13 @@ export const programTracks: ProgramTrack[] = [
         image: "/images/master_09.webp",
         lessonPlaceholder: "Extreme",
         imagePosition: "50% 10%",
+        modalCarouselImages: [
+          "/images/tania-povenskaya1.webp",
+          "/images/tania-povenskaya2.webp",
+          "/images/tania-povenskaya3.webp",
+          "/images/tania-povenskaya4.webp",
+          "/images/tania-povenskaya5.webp",
+        ],
       },
       {
         date: "20 Marzo",
