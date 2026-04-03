@@ -369,9 +369,9 @@ export const programTracks: ProgramTrack[] = [
       },
       {
         date: "22 Febbraio",
-        master: "Tania Povenskaya",
+        master: "Tanya Povenskaya",
         image: "/images/master_09.webp",
-        lessonPlaceholder: "Extreme",
+        lessonPlaceholder: "Blade",
         imagePosition: "50% 10%",
         modalCarouselImages: [
           "/images/tania-povenskaya1.webp",
