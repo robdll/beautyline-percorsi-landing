@@ -307,8 +307,13 @@ export const programTracks: ProgramTrack[] = [
         date: "14 Febbraio",
         master: "Fabio Billoni",
         image: "/images/master_03.webp",
-        lessonPlaceholder: "Dual Form",
+        lessonPlaceholder: "Creativity Full Set",
         imagePosition: "50% 2%",
+        modalCarouselImages: [
+          "/images/creativity-1.mp4",
+          "/images/creativity-2.webp",
+          "/images/creativity-3.webp",
+        ],
       },
       {
         date: "15 Febbraio",
