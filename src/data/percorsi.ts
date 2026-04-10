@@ -74,7 +74,10 @@ export const pageContent = {
       "/images/hero-class-certificates-wide.webp",
       "/images/hero-studio-group-vanity.webp",
       "/images/hero-nail-art-radial.webp",
+      "/images/hero-certification-1.webp",
       "/images/hero-masterclass-demo.webp",
+      "/images/hero-certification-2.webp",
+      "/images/hero-certification-3.webp",
     ],
   },
   comparisonIntro:
