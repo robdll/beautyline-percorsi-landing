@@ -328,6 +328,7 @@ export const programTracks: ProgramTrack[] = [
         master: "Ildiko Marczinek",
         image: "/images/master_05.webp",
         lessonPlaceholder: "Edge",
+        modalCarouselImages: ["/images/idiko.webp"],
       },
       {
         date: "15 Marzo",
