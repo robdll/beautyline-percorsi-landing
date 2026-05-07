@@ -64,8 +64,8 @@ const ogImageUrl = new URL(ogImage, site).toString();
       hidden
     >
       <p>
-        Utilizziamo cookie tecnici necessari e, previo tuo consenso, cookie di analisi e pubblicitari per Google
-        Analytics e Google Ads, al fine di migliorare la tua esperienza e misurare le performance del sito.
+        Utilizziamo cookie tecnici necessari e, previo tuo consenso, cookie pubblicitari tramite Google Ads per
+        misurare le campagne e proporti contenuti piu pertinenti.
       </p>
       <div class="cookie-consent-actions">
         <button class="btn btn-primary" type="button" data-cookie-accept-all>
@@ -78,6 +78,8 @@ const ogImageUrl = new URL(ogImage, site).toString();
       </div>
     </aside>
     <script>
+      const GOOGLE_ADS_MEASUREMENT_ID = "AW-18143736615";
+
       const COOKIE_CONSENT_KEY = "cookieConsentChoice";
       const COOKIE_ACCEPTED_VALUE = "accepted_all";
       const COOKIE_ESSENTIAL_VALUE = "essential_only";
@@ -86,10 +88,26 @@ const ogImageUrl = new URL(ogImage, site).toString();
       const acceptAllButton = document.querySelector("[data-cookie-accept-all]");
       const essentialOnlyButton = document.querySelector("[data-cookie-essential-only]");
 
+      let googleAdsInitialized = false;
+
       const initializeTrackingScripts = () => {
-        // Placeholder: initialize Google Analytics and Google Ads only after explicit consent.
-        // Example: load gtag.js and configure measurement/ads conversion IDs here.
-        console.info("Cookie consent granted: initialize Google Analytics and Google Ads scripts.");
+        if (googleAdsInitialized) return;
+        googleAdsInitialized = true;
+
+        type GtagWindow = Window & { dataLayer: unknown[]; gtag?: (...args: unknown[]) => void };
+        const win = window as unknown as GtagWindow;
+        win.dataLayer = win.dataLayer ?? [];
+        win.gtag = function gtag() {
+          // Same as Google's snippet: push the call's arguments object for gtag.js to consume.
+          win.dataLayer.push(arguments as unknown as IArguments);
+        };
+        win.gtag("js", new Date());
+        win.gtag("config", GOOGLE_ADS_MEASUREMENT_ID);
+
+        const script = document.createElement("script");
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_MEASUREMENT_ID}`;
+        document.head.appendChild(script);
       };
 
       const setConsentChoice = (choice: string) => {
