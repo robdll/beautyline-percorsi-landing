@@ -1004,6 +1004,37 @@ footer a:focus-visible {
   color: #4f2e1a;
 }
 
+.whatsapp-float-button {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #25d366;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+  z-index: 30;
+}
+
+.whatsapp-float-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.whatsapp-float-button:hover,
+.whatsapp-float-button:focus-visible {
+  background: #1db954;
+}
+
+.whatsapp-float-button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .schedule-card img {
     transition: none;
@@ -1080,6 +1111,11 @@ footer a:focus-visible {
 
   .cookie-consent-actions .btn {
     width: 100%;
+  }
+
+  .whatsapp-float-button {
+    right: 12px;
+    bottom: 12px;
   }
 }
 

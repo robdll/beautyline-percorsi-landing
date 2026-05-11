@@ -531,26 +531,12 @@ const homeJsonLd = [organizationSchema, faqSchema];
 
   <script define:vars={{ defaultModalCarouselImages, heroCarouselImages, heroImageAlt: pageContent.hero.imageAlt }}>
     type TrackingWindow = Window & {
-      gtag?: (command: string, eventName: string, params?: Record<string, unknown>) => void;
+      trackGoogleAdsConversion?: () => void;
     };
-
-    const GOOGLE_ADS_CONVERSION_ID = "AW-18143736615/BE-VCJyNlKkcEKfmzctD";
-    const COOKIE_CONSENT_KEY = "cookieConsentChoice";
-    const COOKIE_ACCEPTED_VALUE = "accepted_all";
 
     const trackLeadConversion = () => {
       const trackingWindow = window as TrackingWindow;
-      const hasConsent = localStorage.getItem(COOKIE_CONSENT_KEY) === COOKIE_ACCEPTED_VALUE;
-
-      if (!hasConsent || typeof trackingWindow.gtag !== "function") return;
-
-      try {
-        trackingWindow.gtag("event", "conversion", {
-          send_to: GOOGLE_ADS_CONVERSION_ID,
-        });
-      } catch {
-        // Never block form UX for analytics failures.
-      }
+      trackingWindow.trackGoogleAdsConversion?.();
     };
 
     const navToggle = document.querySelector("[data-nav-toggle]");
