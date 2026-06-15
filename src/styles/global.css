@@ -529,8 +529,56 @@ header.site-header {
 }
 
 .percorso-summary-card {
+  position: relative;
+  overflow: hidden;
   padding-left: 18px;
   padding-right: 18px;
+}
+
+.percorso-price-tag {
+  position: absolute;
+  top: 16px;
+  right: -50px;
+  z-index: 1;
+  min-width: 158px;
+  overflow: hidden;
+  text-align: center;
+  background: var(--primary);
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 6px rgba(103, 96, 92, 0.2);
+  transform: rotate(45deg);
+  pointer-events: none;
+  text-indent: -10px;
+  line-height: 1rem;
+  padding: 15px 12px 10px 12px;
+}
+
+.percorso-price-tag::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.75), transparent);
+  transform: skewX(-30deg);
+  transition: left 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.percorso-card-link:hover .percorso-price-tag::before,
+.percorso-card-link:focus-visible .percorso-price-tag::before {
+  left: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .percorso-price-tag::before {
+    transition: none;
+  }
 }
 
 .date-master-line {

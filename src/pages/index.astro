@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
   defaultModalCarouselImages,
+  formatPercorsoPrice,
   pageContent,
   percorsi,
   programTracks,
@@ -170,6 +171,12 @@ const homeJsonLd = [organizationSchema, faqSchema];
               aria-label={`Vai a ${percorso.name}`}
             >
               <article class="card content-card percorso-summary-card">
+                <span
+                  class="percorso-price-tag"
+                  aria-label={`Prezzo ${formatPercorsoPrice(percorso.price)}`}
+                >
+                  {formatPercorsoPrice(percorso.price)}
+                </span>
                 <p class="percorso-name">{percorso.shortName}</p>
                 <div class="date-master-line date-master-head" role="presentation">
                   <span>Data</span>

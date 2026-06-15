@@ -8,10 +8,14 @@ export type Percorso = {
   shortName: string;
   subtitle: string;
   description: string;
+  price: number;
   highlights: string[];
   dates: string[];
   certifications: CertificationLevel[];
 };
+
+export const formatPercorsoPrice = (price: number): string =>
+  `€${price.toLocaleString("it-IT")}`;
 
 export type ProgramSession = {
   date: string;
@@ -240,6 +244,7 @@ export const percorsi: Percorso[] = [
   {
     name: "Percorso Master Pro",
     shortName: "Master Pro",
+    price: 2000,
     subtitle: "Crescita tecnica completa",
     description:
       "Percorso esclusivo con master nazionali e internazionali, dedicato a precisione, struttura e visione professionale del lavoro.",
@@ -259,6 +264,7 @@ export const percorsi: Percorso[] = [
   {
     name: "Percorso Master Experience",
     shortName: "Master Experience",
+    price: 2500,
     subtitle: "Formazione intensiva con master internazionali",
     description:
       "Esperienza immersiva per apprendere nuove tecniche e alzare il livello professionale insieme a master di fama mondiale.",
