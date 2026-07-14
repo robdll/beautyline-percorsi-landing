@@ -537,13 +537,8 @@ const homeJsonLd = [organizationSchema, faqSchema];
   <SiteFooter />
 
   <script define:vars={{ defaultModalCarouselImages, heroCarouselImages, heroImageAlt: pageContent.hero.imageAlt }}>
-    type TrackingWindow = Window & {
-      trackGoogleAdsConversion?: () => void;
-    };
-
     const trackLeadConversion = () => {
-      const trackingWindow = window as TrackingWindow;
-      trackingWindow.trackGoogleAdsConversion?.();
+      window.trackGoogleAdsConversion?.();
     };
 
     const navToggle = document.querySelector("[data-nav-toggle]");
