@@ -53,6 +53,204 @@ const ogImageUrl = new URL(ogImage, site).toString();
       <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     )}
     <title>{title}</title>
+    <script is:inline>
+      (function () {
+        var CONSENT_KEYS = [
+          "ad_storage",
+          "analytics_storage",
+          "ad_user_data",
+          "ad_personalization",
+          "personalization_storage",
+          "functionality_storage",
+          "security_storage",
+        ];
+        var CONSENT_COOKIE = "cookie_consent";
+        var LEGACY_STORAGE_KEY = "cookieConsentChoice";
+        var CONSENT_MAX_AGE = 60 * 60 * 24 * 180;
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+        window.gtag = gtag;
+
+        function cookieOptions(maxAge) {
+          var parts = ["Path=/", "Max-Age=" + maxAge, "SameSite=Lax"];
+          if (location.protocol === "https:") parts.push("Secure");
+          return parts.join("; ");
+        }
+
+        function writeCookie(name, value) {
+          document.cookie =
+            name + "=" + encodeURIComponent(value) + "; " + cookieOptions(CONSENT_MAX_AGE);
+        }
+
+        function deleteCookie(name) {
+          document.cookie = name + "=; " + cookieOptions(0);
+        }
+
+        function readCookie(name) {
+          var prefix = name + "=";
+          var cookies = document.cookie.split(";");
+          for (var i = 0; i < cookies.length; i++) {
+            var part = cookies[i].trim();
+            if (part.indexOf(prefix) === 0) {
+              return decodeURIComponent(part.slice(prefix.length));
+            }
+          }
+          return "";
+        }
+
+        function grantedState() {
+          return {
+            ad_storage: "granted",
+            analytics_storage: "granted",
+            ad_user_data: "granted",
+            ad_personalization: "granted",
+            personalization_storage: "granted",
+            functionality_storage: "granted",
+            security_storage: "granted",
+          };
+        }
+
+        function essentialState() {
+          return {
+            ad_storage: "denied",
+            analytics_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+            personalization_storage: "denied",
+            functionality_storage: "granted",
+            security_storage: "granted",
+          };
+        }
+
+        function deniedState() {
+          return {
+            ad_storage: "denied",
+            analytics_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+            personalization_storage: "denied",
+            functionality_storage: "denied",
+            security_storage: "granted",
+          };
+        }
+
+        function isConsentValue(value) {
+          return value === "granted" || value === "denied";
+        }
+
+        function persistConsent(state) {
+          writeCookie(CONSENT_COOKIE, JSON.stringify(state));
+          for (var i = 0; i < CONSENT_KEYS.length; i++) {
+            writeCookie(CONSENT_KEYS[i], state[CONSENT_KEYS[i]]);
+          }
+          try {
+            localStorage.setItem(
+              LEGACY_STORAGE_KEY,
+              state.ad_storage === "granted" ? "accepted_all" : "essential_only"
+            );
+          } catch (error) {
+            // localStorage can be unavailable; first-party cookies remain the source of truth.
+          }
+        }
+
+        function getStoredConsent() {
+          try {
+            var parsed = JSON.parse(readCookie(CONSENT_COOKIE) || "");
+            if (parsed && isConsentValue(parsed.ad_storage)) return parsed;
+          } catch (error) {
+            // Fall through to individual cookies or legacy storage.
+          }
+
+          var fromCookies = {};
+          var found = 0;
+          for (var i = 0; i < CONSENT_KEYS.length; i++) {
+            var value = readCookie(CONSENT_KEYS[i]);
+            if (isConsentValue(value)) {
+              fromCookies[CONSENT_KEYS[i]] = value;
+              found += 1;
+            }
+          }
+          if (found === CONSENT_KEYS.length) return fromCookies;
+
+          try {
+            var legacy = localStorage.getItem(LEGACY_STORAGE_KEY);
+            if (legacy === "accepted_all") return grantedState();
+            if (legacy === "essential_only") return essentialState();
+          } catch (error) {
+            // Ignore unavailable storage.
+          }
+
+          return null;
+        }
+
+        function applyConsent(state) {
+          gtag("consent", "update", state);
+          window.dataLayer.push({
+            event: "cookie_consent_update",
+            cookie_consent: state,
+          });
+        }
+
+        gtag("consent", "default", Object.assign({ wait_for_update: 500 }, deniedState()));
+        gtag("set", "ads_data_redaction", true);
+        gtag("set", "url_passthrough", true);
+
+        var storedConsent = getStoredConsent();
+        if (storedConsent) {
+          gtag("consent", "update", storedConsent);
+          if (!readCookie(CONSENT_COOKIE)) {
+            persistConsent(storedConsent);
+          }
+        }
+
+        window.__cookieConsent = {
+          hasChoice: function () {
+            return !!getStoredConsent();
+          },
+          isAdvertisingGranted: function () {
+            var state = getStoredConsent();
+            return !!(state && state.ad_storage === "granted");
+          },
+          acceptAll: function () {
+            var state = grantedState();
+            persistConsent(state);
+            applyConsent(state);
+          },
+          essentialOnly: function () {
+            var state = essentialState();
+            persistConsent(state);
+            applyConsent(state);
+          },
+          reset: function () {
+            deleteCookie(CONSENT_COOKIE);
+            for (var i = 0; i < CONSENT_KEYS.length; i++) {
+              deleteCookie(CONSENT_KEYS[i]);
+            }
+            try {
+              localStorage.removeItem(LEGACY_STORAGE_KEY);
+            } catch (error) {
+              // Ignore unavailable storage.
+            }
+            applyConsent(deniedState());
+          },
+        };
+      })();
+    </script>
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0];
+        var j = d.createElement(s);
+        var dl = l !== "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-NFMBX8VX");
+    </script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -89,8 +287,8 @@ const ogImageUrl = new URL(ogImage, site).toString();
       hidden
     >
       <p>
-        Utilizziamo cookie tecnici necessari e, previo tuo consenso, cookie pubblicitari tramite Google Ads per
-        misurare le campagne e proporti contenuti piu pertinenti.
+        Utilizziamo cookie tecnici necessari e, previo tuo consenso, cookie di analisi e pubblicitari tramite
+        Google Tag Manager e Google Ads per misurare campagne, conversioni e proporti contenuti più pertinenti.
       </p>
       <div class="cookie-consent-actions">
         <button class="btn btn-primary" type="button" data-cookie-accept-all>
@@ -103,54 +301,57 @@ const ogImageUrl = new URL(ogImage, site).toString();
       </div>
     </aside>
     <script>
-      const GTM_ID = "GTM-NFMBX8VX";
       const GOOGLE_ADS_MEASUREMENT_ID = "AW-18143736615";
       const GOOGLE_ADS_CONVERSION_ID = "AW-18143736615/BE-VCJyNlKkcEKfmzctD";
-
-      const COOKIE_CONSENT_KEY = "cookieConsentChoice";
-      const COOKIE_ACCEPTED_VALUE = "accepted_all";
-      const COOKIE_ESSENTIAL_VALUE = "essential_only";
 
       const consentBanner = document.querySelector("[data-cookie-banner]");
       const acceptAllButton = document.querySelector("[data-cookie-accept-all]");
       const essentialOnlyButton = document.querySelector("[data-cookie-essential-only]");
+      const resetConsentButton = document.querySelector("[data-cookie-reset]");
       const whatsappFloatButton = document.querySelector("[data-whatsapp-float]");
 
       let trackingInitialized = false;
+
+      type ConsentApi = {
+        hasChoice: () => boolean;
+        isAdvertisingGranted: () => boolean;
+        acceptAll: () => void;
+        essentialOnly: () => void;
+        reset: () => void;
+      };
 
       type TrackingWindow = Window & {
         dataLayer: unknown[];
         gtag?: (...args: unknown[]) => void;
         trackGoogleAdsConversion?: () => void;
+        __cookieConsent?: ConsentApi;
       };
 
       const trackingWindow = window as unknown as TrackingWindow;
+      const cookieConsent = trackingWindow.__cookieConsent;
 
-      const initializeGoogleTagManager = () => {
-        trackingWindow.dataLayer = trackingWindow.dataLayer ?? [];
-        trackingWindow.dataLayer.push({
-          "gtm.start": new Date().getTime(),
-          event: "gtm.js",
-        });
+      const hideBanner = () => {
+        if (consentBanner instanceof HTMLElement) {
+          consentBanner.setAttribute("hidden", "");
+        }
+      };
 
-        const firstScript = document.getElementsByTagName("script")[0];
-        const gtmScript = document.createElement("script");
-        gtmScript.async = true;
-        gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
-        firstScript?.parentNode?.insertBefore(gtmScript, firstScript);
+      const showBanner = () => {
+        if (consentBanner instanceof HTMLElement) {
+          consentBanner.removeAttribute("hidden");
+        }
       };
 
       const initializeTrackingScripts = () => {
-        if (trackingInitialized) return;
+        if (trackingInitialized || !cookieConsent?.isAdvertisingGranted()) return;
         trackingInitialized = true;
 
-        initializeGoogleTagManager();
-
         trackingWindow.dataLayer = trackingWindow.dataLayer ?? [];
-        trackingWindow.gtag = function gtag() {
-          // Same as Google's snippet: push the call's arguments object for gtag.js to consume.
-          trackingWindow.dataLayer.push(arguments as unknown as IArguments);
-        };
+        trackingWindow.gtag =
+          trackingWindow.gtag ??
+          function gtag() {
+            trackingWindow.dataLayer.push(arguments as unknown as IArguments);
+          };
         trackingWindow.gtag("js", new Date());
         trackingWindow.gtag("config", GOOGLE_ADS_MEASUREMENT_ID);
 
@@ -161,8 +362,7 @@ const ogImageUrl = new URL(ogImage, site).toString();
       };
 
       trackingWindow.trackGoogleAdsConversion = () => {
-        const hasConsent = localStorage.getItem(COOKIE_CONSENT_KEY) === COOKIE_ACCEPTED_VALUE;
-        if (!hasConsent || typeof trackingWindow.gtag !== "function") return;
+        if (!cookieConsent?.isAdvertisingGranted() || typeof trackingWindow.gtag !== "function") return;
 
         try {
           trackingWindow.gtag("event", "conversion", {
@@ -173,31 +373,35 @@ const ogImageUrl = new URL(ogImage, site).toString();
         }
       };
 
-      const setConsentChoice = (choice: string) => {
-        localStorage.setItem(COOKIE_CONSENT_KEY, choice);
-        if (consentBanner instanceof HTMLElement) {
-          consentBanner.setAttribute("hidden", "");
-        }
-      };
-
-      const storedConsent = localStorage.getItem(COOKIE_CONSENT_KEY);
-
-      if (storedConsent === COOKIE_ACCEPTED_VALUE) {
+      if (cookieConsent?.isAdvertisingGranted()) {
         initializeTrackingScripts();
-      } else if (!storedConsent && consentBanner instanceof HTMLElement) {
-        consentBanner.removeAttribute("hidden");
+        hideBanner();
+      } else if (cookieConsent?.hasChoice()) {
+        hideBanner();
+      } else {
+        showBanner();
       }
 
       if (acceptAllButton instanceof HTMLButtonElement) {
         acceptAllButton.addEventListener("click", () => {
-          setConsentChoice(COOKIE_ACCEPTED_VALUE);
+          cookieConsent?.acceptAll();
+          hideBanner();
           initializeTrackingScripts();
         });
       }
 
       if (essentialOnlyButton instanceof HTMLButtonElement) {
         essentialOnlyButton.addEventListener("click", () => {
-          setConsentChoice(COOKIE_ESSENTIAL_VALUE);
+          cookieConsent?.essentialOnly();
+          hideBanner();
+        });
+      }
+
+      if (resetConsentButton instanceof HTMLButtonElement) {
+        resetConsentButton.addEventListener("click", () => {
+          cookieConsent?.reset();
+          trackingInitialized = false;
+          showBanner();
         });
       }
 

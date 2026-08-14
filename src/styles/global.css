@@ -443,6 +443,35 @@ header.site-header {
   padding: 24px;
 }
 
+.consent-table-wrap {
+  overflow-x: auto;
+  margin: 12px 0 20px;
+}
+
+.consent-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.consent-table th,
+.consent-table td {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.consent-table th {
+  background: #f7f1ea;
+  font-weight: 700;
+}
+
+.consent-table code {
+  font-size: 0.88em;
+}
+
 .content-card h3 {
   margin-top: 0;
   margin-bottom: 8px;

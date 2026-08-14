@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout
   title="Cookie Policy | Beauty Line Academy"
-  description="Informativa estesa sui cookie utilizzati da Beauty Line Academy."
+  description="Informativa estesa sui cookie e sul consenso Google Consent Mode utilizzati da Beauty Line Academy."
 >
   <main>
     <section class="section">
@@ -12,7 +12,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <article class="card content-card">
           <h1 class="section-title">Cookie Policy</h1>
           <p>
-            La presente Cookie Policy descrive le modalita con cui Beauty Line Academy utilizza i cookie e
+            La presente Cookie Policy descrive le modalità con cui Beauty Line Academy utilizza i cookie e
             tecnologie simili sul presente sito, nel rispetto del Regolamento (UE) 2016/679 (GDPR) e della normativa
             ePrivacy applicabile.
           </p>
@@ -24,33 +24,109 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             informazioni statistiche o di marketing, solo quando consentito.
           </p>
 
+          <h2>Google Consent Mode</h2>
+          <p>
+            Il sito utilizza <strong>Google Consent Mode v2</strong> per comunicare a Google Tag Manager e Google Ads
+            lo stato del tuo consenso. Quando scegli <strong>Accetta tutti</strong>, i seguenti segnali vengono
+            salvati come cookie di prima parte (durata 6 mesi) e inviati a Google tramite
+            <code>gtag(&apos;consent&apos;, &apos;update&apos;)</code>:
+          </p>
+          <div class="consent-table-wrap">
+          <table class="consent-table">
+            <thead>
+              <tr>
+                <th>Segnale / cookie</th>
+                <th>Cosa abilita</th>
+                <th>Accetta tutti</th>
+                <th>Solo essenziali</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>ad_storage</code></td>
+                <td>Cookie pubblicitari e Conversion Linker (<code>_gcl_*</code>)</td>
+                <td>granted</td>
+                <td>denied</td>
+              </tr>
+              <tr>
+                <td><code>analytics_storage</code></td>
+                <td>Cookie di misurazione e analisi</td>
+                <td>granted</td>
+                <td>denied</td>
+              </tr>
+              <tr>
+                <td><code>ad_user_data</code></td>
+                <td>Invio a Google di dati utente per finalità pubblicitarie</td>
+                <td>granted</td>
+                <td>denied</td>
+              </tr>
+              <tr>
+                <td><code>ad_personalization</code></td>
+                <td>Annunci personalizzati</td>
+                <td>granted</td>
+                <td>denied</td>
+              </tr>
+              <tr>
+                <td><code>personalization_storage</code></td>
+                <td>Personalizzazione dei contenuti</td>
+                <td>granted</td>
+                <td>denied</td>
+              </tr>
+              <tr>
+                <td><code>functionality_storage</code></td>
+                <td>Funzioni e preferenze del sito, inclusa la scelta sui cookie</td>
+                <td>granted</td>
+                <td>granted</td>
+              </tr>
+              <tr>
+                <td><code>security_storage</code></td>
+                <td>Sicurezza e prevenzione frodi</td>
+                <td>granted</td>
+                <td>granted</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <p>
+            Finché non accetti, questi segnali restano su <strong>denied</strong> (tranne
+            <code>security_storage</code>, sempre attivo). In questo modo Google Tag Manager può caricarsi, ma i tag
+            pubblicitari non impostano cookie finché non c&apos;è consenso.
+          </p>
+
           <h2>Tipologie di cookie utilizzate</h2>
           <h3>1. Cookie essenziali (sempre attivi)</h3>
           <p>
             Questi cookie sono necessari al funzionamento tecnico del sito e non richiedono consenso. Permettono, ad
-            esempio, la gestione della sessione e la memorizzazione della tua scelta relativa ai cookie.
+            esempio, la gestione della sessione e la memorizzazione della tua scelta relativa ai cookie
+            (<code>cookie_consent</code>, <code>functionality_storage</code>, <code>security_storage</code>).
           </p>
 
-          <h3>2. Cookie di analisi (Google Analytics)</h3>
+          <h3>2. Cookie di analisi - opzionali</h3>
           <p>
-            Al momento questo sito <strong>non utilizza Google Analytics</strong>. La presente voce viene mantenuta
-            nel caso in cui in futuro venissero attivati cookie di analisi sempre previo consenso espresso.
+            Con <strong>Accetta tutti</strong> viene abilitato <code>analytics_storage</code>. Eventuali tag di
+            misurazione configurati in Google Tag Manager (ad esempio Google Analytics) possono quindi impostare
+            cookie di analisi solo dopo il consenso.
           </p>
 
-          <h3>3. Cookie pubblicitari (Google Ads) - opzionali</h3>
+          <h3>3. Cookie pubblicitari (Google Ads e Conversion Linker) - opzionali</h3>
           <p>
-            Se acconsenti tramite il banner dei cookie (<strong>Accetta tutti</strong>), viene caricato lo script
-            ufficiale <strong>Google tag (gtag.js)</strong> tramite il dominio <code>www.googletagmanager.com</code>{" "}
-            per l&apos;ID di misurazione <strong>AW-18143736615</strong>. Google può impostare o leggere cookie e
-            identificatori per misurare le conversioni delle campagne Google Ads e, ove consentito dalle impostazioni
-            del tuo account Google e della legge applicabile, per attività pubblicitarie correlate.
+            Se acconsenti tramite il banner (<strong>Accetta tutti</strong>), vengono abilitati
+            <code>ad_storage</code>, <code>ad_user_data</code> e <code>ad_personalization</code>. A quel punto Google
+            Tag Manager (<strong>GTM-NFMBX8VX</strong>) e Google Ads (<strong>AW-18143736615</strong>) possono
+            impostare o leggere cookie e identificatori, incluso il <strong>Conversion Linker</strong>, per collegare
+            i clic delle campagne alle conversioni sul sito.
+          </p>
+          <p>
+            Google può impostare cookie di prima parte come <code>_gcl_au</code>, <code>_gcl_aw</code> e simili per
+            misurare le conversioni. Ove consentito dalle impostazioni del tuo account Google e dalla legge
+            applicabile, questi dati possono essere usati anche per attività pubblicitarie correlate.
           </p>
 
           <h2>Base giuridica del trattamento</h2>
           <p>
             I cookie essenziali sono trattati sulla base del legittimo interesse a garantire la sicurezza e la
-            funzionalita del sito. I cookie pubblicitari sono trattati solo previo consenso esplicito
-            dell&apos;utente. Eventuali futuri cookie di analisi saranno comunque soggetti a consenso, come da questa Cookie Policy.
+            funzionalità del sito. I cookie di analisi, personalizzazione e pubblicitari sono trattati solo previo
+            consenso esplicito dell&apos;utente.
           </p>
 
           <h2>Gestione del consenso</h2>
@@ -58,18 +134,33 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             Al primo accesso puoi scegliere tra:
           </p>
           <ul>
-            <li><strong>Accetta tutti</strong>: abilita cookie essenziali e cookie pubblicitari (Google Ads mediante gtag.js).</li>
-            <li><strong>Solo essenziali</strong>: mantiene attivi solo i cookie tecnici essenziali e non viene caricato Google Ads/gtag.js.</li>
+            <li>
+              <strong>Accetta tutti</strong>: salva tutti i segnali Consent Mode come <code>granted</code>, abilita
+              Google Tag Manager / Google Ads e il Conversion Linker.
+            </li>
+            <li>
+              <strong>Solo essenziali</strong>: mantiene attivi solo i cookie tecnici
+              (<code>security_storage</code> e <code>functionality_storage</code>). I tag pubblicitari e di analisi
+              restano su <code>denied</code> e non impostano cookie di marketing.
+            </li>
           </ul>
           <p>
-            La tua scelta viene memorizzata localmente nel browser per evitare di riproporre il banner a ogni visita.
-            Puoi modificare le preferenze in qualsiasi momento cancellando i cookie dal tuo browser.
+            La tua scelta viene memorizzata per 6 mesi nei cookie di prima parte elencati sopra, così il banner non
+            viene riproposto a ogni visita e Google riceve lo stato di consenso corretto anche al ricaricamento della
+            pagina. Puoi modificare le preferenze in qualsiasi momento con il pulsante seguente oppure cancellando i
+            cookie dal browser.
+          </p>
+          <p>
+            <button class="btn btn-secondary" type="button" data-cookie-reset>
+              Modifica preferenze cookie
+            </button>
           </p>
 
           <h2>Durata dei cookie</h2>
           <p>
-            La durata dei cookie puo variare in base alla tipologia e alle impostazioni dei fornitori terzi (Google).
-            Per dettagli aggiornati, consulta le informative ufficiali di Google Analytics e Google Ads.
+            Il consenso e i relativi cookie di prima parte durano <strong>6 mesi</strong>. La durata dei cookie di
+            terze parti (Google) può variare in base alle impostazioni dei fornitori. Per dettagli aggiornati,
+            consulta le informative ufficiali di Google Ads e Google Tag Manager.
           </p>
 
           <h2>Titolare del trattamento</h2>
@@ -80,7 +171,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
 
           <p class="section-subtitle" style="margin-top: 18px;">
-            Ultimo aggiornamento: 7 maggio 2026
+            Ultimo aggiornamento: 14 agosto 2026
           </p>
         </article>
       </div>
